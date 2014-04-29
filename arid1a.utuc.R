@@ -14,3 +14,21 @@ arid1a.data<- arid1a.full[c("sex", "age", "location", "location2", "pT",
 # Loading the libraries required for the analysis
 library(psych)
 library(gmodels)
+
+# DEFINING USEFUL FUNCTIONS FOR DATA ANALYSIS
+# Defining the function "descriptive" for estimating mean, sd, median, and iqr
+descriptive <- function(x, na.rm = TRUE){ # The function requires x in format dfrm$var
+        a <- mean(x) 
+        b <- sd(x)
+        c <- quantile(x, .5)
+        d <- IQR(x)
+        e <- round(rbind(a, b, c, d), digits = 1)
+        final <- matrix(data = e, dimnames = list(c("Mean", "SD", "Median", "IQR"),
+                                                  c("Values")))
+        print(final)
+}
+# Defining the function "table.prop" which formats the output of CrossTable
+table.prop <- function(x, ...){ # This function requieres the CrossTable package
+        data <- CrossTable(x, digits = 0, format = c("SPSS"),
+                           prop.chisq = FALSE, prop.t = FALSE, ...)
+}
