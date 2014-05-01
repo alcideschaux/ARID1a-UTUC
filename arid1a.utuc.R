@@ -1,14 +1,14 @@
-# ARID1a Expression in Upper Tract Urothelial Carcinoma
-# DATA ANALYSIS
-# REMEMBER FIRST to set the working directory
-setwd()
+# DATA ANALYSIS: ARID1a Expression in Upper Tract Urothelial Carcinoma
+
+# Loading the libraries required for the analysis
+library(survival)
+library(tcltk)
+
+# Setting the working directory
+setwd(tk_choose.dir())
 
 # Opening the dataset
 arid1a.full <- read.csv(file = "arid1a.utuc.csv")
-
-# Loading the libraries required for the analysis
-library(gmodels)
-library(survival)
 
 # Loading the functions for standard.analysis
 source(file = "standard.analysis.R")
