@@ -13,16 +13,16 @@ descriptive <- function(x, na.rm = TRUE){
                                                   c("Values")))
         print(final)
 }
-# Defining the function "table.prop" which formats the output of CrossTable
-        # This function requieres the CrossTable package
+# Defining the function "table.prop" which provides counts and percentages of
+        # a single variable factor
         # The function requires x in dfrm$var format
-        # x must be factor
-table.prop <- function(x, ...){ 
-        data <- CrossTable(x, digits = 0, format = c("SPSS"),
-                           prop.chisq = FALSE, prop.t = FALSE,
-                           missing.include = TRUE,
-                           ...)
+table.prop <- function(x){
+        a <- table(x, useNA = "ifany")
+        b <- 100*round(prop.table(a), digits = 3)
+        c <- cbind(Count = a, Percentages = b)
+        print(c)
 }
+
 # Defining the function "compare.wilcox" which shows the median and IQR of
         # x by y and provides the P value from the Mann-Whitney test
         # x corresponds to the numerical/integer variable
