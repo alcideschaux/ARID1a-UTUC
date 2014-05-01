@@ -13,6 +13,7 @@ arid1a.data<- arid1a.full[c("sex", "age", "location", "location2", "pT",
                       "tumor.pos.p50", "tumor.pos.q3")]
 # Loading the libraries required for the analysis
 library(gmodels)
+library(survival)
 
 # DEFINING USEFUL FUNCTIONS FOR DATA ANALYSIS
 # Defining the function "descriptive" for estimating mean, sd, median, and iqr
@@ -74,11 +75,24 @@ compare.fisher <- function(x, y){
         # The function requires the specification of the data.frame
 logistic <- function(x, data){
         model <- glm(x, data = data, family = binomial)
-        a <- exp(cbind("Odds Ratio" = coef(model), confint(model)))
-        b <- summary(model)$coeff[,4]
-        c <- cbind(a, "P value" = b)
-        print(c)
+        a <- exp(cbind("Odds Ratio" = coef(model), confint(model))) # OR & 95% CI
+        b <- summary(model)$coeff[,4] # P values
+        print(cbind(a, "P value" = b))
 }
+# Defining the function "hazard" which provides the HR, 95% CI and P values of a
+        # proportional hazards Cox regression model
+        # x must be a a formula object, with the response on the left of a ~ operator
+        # The response must be a survival object as returned by the Surv function
+        # The function requires the specification of the data.frame
+hazard <- function(x, data){
+        model <- coxph(x, data = data)
+        a <- summary(model)$coefficients[,2] # HR
+        b <- confint(model) # 95% CI
+        c <- summary(model)$coefficients[,5] # P values
+        print(cbind("Hazard Ratio" = a, b, "P value" = c))
+}
+
+hazard(prueba.surv ~ sex + pT.2, data = arid1a.data)
 
 # TABLE 1: Clinicopathologic Features and Outcome of 99 Patients with
         # Upper Tract Urothelial Carcinoma
@@ -181,3 +195,69 @@ logistic(dod ~ tumor.pos.p50 + age + sex + location2 + WHO.grade
          + lymph.nodes + lvi, data = arid1a.data)
 logistic(dod ~ tumor.pos.q3 + age + sex + location2 + WHO.grade
          + lymph.nodes + lvi, data = arid1a.data)
+
+# TABLE 4: Hazard Ratios for Tumor Progression and Cancer-Specific Mortality
+        # Considering Clinicopathologic Features and Immunohistochemical
+        # Expression of ARID1a
+# TUMOR PROGRESSION
+progression.surv <- with( # Defining the survival object for tumor progression
+        Surv(fu.prog, as.numeric(tumor.prog)), data = arid1a.data)
+## Clinicopathologic features
+hazard(progression.surv ~ age, data = arid1a.data)
+hazard(progression.surv ~ sex, data = arid1a.data)
+hazard(progression.surv ~ location2, data = arid1a.data)
+hazard(progression.surv ~ pT.2, data = arid1a.data)
+hazard(progression.surv ~ WHO.grade, data = arid1a.data)
+hazard(progression.surv ~ lymph.nodes, data = arid1a.data)
+hazard(progression.surv ~ lvi, data = arid1a.data)
+## ARID1a Unadjusted
+hazard(progression.surv ~ tumor.h.0, data = arid1a.data)
+hazard(progression.surv ~ tumor.h.p50, data = arid1a.data)
+hazard(progression.surv ~ tumor.h.q3, data = arid1a.data)
+hazard(progression.surv ~ tumor.pos.0, data = arid1a.data)
+hazard(progression.surv ~ tumor.pos.p50, data = arid1a.data)
+hazard(progression.surv ~ tumor.pos.q3, data = arid1a.data)
+## ARID1a adjusted by clinicopathologic features
+hazard(progression.surv ~ tumor.h.0 + age + sex + location2 + WHO.grade
+         + lymph.nodes + lvi, data = arid1a.data)
+hazard(progression.surv ~ tumor.h.p50 + age + sex + location2 + WHO.grade
+         + lymph.nodes + lvi, data = arid1a.data)
+hazard(progression.surv ~ tumor.h.q3 + age + sex + location2 + WHO.grade
+         + lymph.nodes + lvi, data = arid1a.data)
+hazard(progression.surv ~ tumor.pos.0 + age + sex + location2 + WHO.grade
+         + lymph.nodes + lvi, data = arid1a.data)
+hazard(progression.surv ~ tumor.pos.p50 + age + sex + location2 + WHO.grade
+         + lymph.nodes + lvi, data = arid1a.data)
+hazard(progression.surv ~ tumor.pos.q3 + age + sex + location2 + WHO.grade
+         + lymph.nodes + lvi, data = arid1a.data)
+# CANCER-MORTALITY
+dod.surv <- with( # Defining the survival object for cancer mortality
+        Surv(fu.outcome, as.numeric(dod)), data = arid1a.data)
+## Clinicopathologic features
+hazard(dod.surv ~ age, data = arid1a.data)
+hazard(dod.surv ~ sex, data = arid1a.data)
+hazard(dod.surv ~ location2, data = arid1a.data)
+hazard(dod.surv ~ pT.2, data = arid1a.data)
+hazard(dod.surv ~ WHO.grade, data = arid1a.data)
+hazard(dod.surv ~ lymph.nodes, data = arid1a.data)
+hazard(dod.surv ~ lvi, data = arid1a.data)
+## ARID1a Unadjusted
+hazard(dod.surv ~ tumor.h.0, data = arid1a.data)
+hazard(dod.surv ~ tumor.h.p50, data = arid1a.data)
+hazard(dod.surv ~ tumor.h.q3, data = arid1a.data)
+hazard(dod.surv ~ tumor.pos.0, data = arid1a.data)
+hazard(dod.surv ~ tumor.pos.p50, data = arid1a.data)
+hazard(dod.surv ~ tumor.pos.q3, data = arid1a.data)
+## ARID1a adjusted by clinicopathologic features
+hazard(dod.surv ~ tumor.h.0 + age + sex + location2 + WHO.grade
+       + lymph.nodes + lvi, data = arid1a.data)
+hazard(dod.surv ~ tumor.h.p50 + age + sex + location2 + WHO.grade
+       + lymph.nodes + lvi, data = arid1a.data)
+hazard(dod.surv ~ tumor.h.q3 + age + sex + location2 + WHO.grade
+       + lymph.nodes + lvi, data = arid1a.data)
+hazard(dod.surv ~ tumor.pos.0 + age + sex + location2 + WHO.grade
+       + lymph.nodes + lvi, data = arid1a.data)
+hazard(dod.surv ~ tumor.pos.p50 + age + sex + location2 + WHO.grade
+       + lymph.nodes + lvi, data = arid1a.data)
+hazard(dod.surv ~ tumor.pos.q3 + age + sex + location2 + WHO.grade
+       + lymph.nodes + lvi, data = arid1a.data)
