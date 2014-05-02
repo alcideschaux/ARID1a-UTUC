@@ -2,11 +2,11 @@
 # Defining the function "descriptive" for estimating mean, sd, median, and iqr
         # The function requires x in dfrm$var format
         # x must be numerical or integer
-descriptive <- function(x, na.rm = TRUE){ 
-        a <- mean(x) 
-        b <- sd(x)
-        c <- quantile(x, .5)
-        d <- IQR(x)
+descriptive <- function(x){ 
+        a <- mean(x, na.rm = TRUE)
+        b <- sd(x, na.rm = TRUE)
+        c <- quantile(x, .5, na.rm = TRUE)
+        d <- IQR(x, na.rm = TRUE)
         e <- round(rbind(a, b, c, d), digits = 1)
         final <- matrix(data = e, dimnames = list(c("Mean", "SD", "Median", "IQR"),
                                                   c("Values")))
@@ -19,7 +19,9 @@ table.prop <- function(x){
         a <- table(x, useNA = "ifany")
         b <- 100*round(prop.table(a), digits = 3)
         c <- cbind(Count = a, Percentages = b)
+        d <- sum(a)
         print(c)
+        cat("\nTotal count =", d)
 }
 
 # Defining the function "compare.wilcox" which shows the median and IQR of
