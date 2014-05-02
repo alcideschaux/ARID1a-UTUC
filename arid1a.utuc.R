@@ -5,7 +5,7 @@ library(survival)
 library(tcltk)
 
 # Setting the working directory
-setwd(tk_choose.dir())
+setwd(dir = "tk_choose.dir()")
 
 # Opening the dataset
 arid1a.full <- read.csv(file = "arid1a.utuc.csv")
