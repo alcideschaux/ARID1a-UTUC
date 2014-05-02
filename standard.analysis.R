@@ -3,7 +3,6 @@
         # The function requires x in dfrm$var format
         # x must be numerical or integer
 descriptive <- function(x, na.rm = TRUE){ 
-        require(gmodels)
         a <- mean(x) 
         b <- sd(x)
         c <- quantile(x, .5)
