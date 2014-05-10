@@ -1,100 +1,100 @@
-sex	age	location	location2	pT	pT.2	pT.a	grade	WHO.grade	lymph.nodes	lvi	metastasis	bladder.recur	fu.recur	tumor.prog	fu.prog	outcome	dod	fu.outcome	tumor.h.med	tumor.h.min	tumor.h.max	tumor.pos.med	tumor.pos.min	tumor.pos.max	normal.h.med	normal.h.min	normal.h.max	normal.pos.med	normal.pos.min	normal.pos.max	tumor.h.0	tumor.h.p50	tumor.h.q3	tumor.pos.0	tumor.pos.p50	tumor.pos.q3
-Male	56	Pelvis	Pelvis	pT1	No	Yes	Grade 2	High Grade	No	No	No	Yes	5	No	137	NED	No	137	140	90	170	90	50	90	125	110	150	75	70	90	High	Low	Low	High	High	Low
-Female	81	Pelvis	Pelvis	pT1	No	Yes	Grade 3	Low Grade	No	No	No	No	83	No	83	LFU	No	83	60	60	70	60	60	70	20	10	20	20	10	20	High	Low	Low	High	Low	Low
-Female	76	Pelvis	Pelvis	pT1	No	Yes	Grade 2	High Grade	No	No	No	Yes	4	No	79	NED	No	79	285	280	285	95	95	95	260	240	265	100	100	100	High	High	High	High	High	Low
-Male	53	Pelvis	Pelvis	pT1	No	Yes	Grade 3	Low Grade	No	No	No	No	59	No	59	NED	No	59	150	20	150	90	20	90	NA	NA	NA	NA	NA	NA	High	Low	Low	High	High	Low
-Female	81	Pelvis	Pelvis	pT1	No	Yes	Grade 2	High Grade	NA	No	NA	No	36	No	27	NED	No	36	NA	NA	NA	NA	NA	NA	210	200	220	100	95	100	High	High	High	High	High	High
-Female	51	Pelvis	Pelvis	pT1	No	Yes	Grade 2	Low Grade	No	No	No	No	158	No	158	NED	No	158	0	0	0	0	0	0	0	0	0	0	0	0	Low	Low	Low	Low	Low	Low
-Male	52	Pelvis	Pelvis	pT1	No	Yes	Grade 2	High Grade	No	No	No	Yes	8	No	129	LFU	No	129	NA	NA	NA	NA	NA	NA	0	0	15	0	0	15	High	High	High	High	High	High
-Male	65	Pelvis	Pelvis	pT1	No	Yes	Grade 2	Low Grade	No	No	No	No	116	No	116	LFU	No	116	15	10	20	15	10	20	15	5	30	15	5	30	High	Low	Low	High	Low	Low
-Male	72	Pelvis	Pelvis	pT1	No	Yes	Grade 3	High Grade	No	Yes	No	Yes	7	No	28	LFU	No	28	50	40	60	50	40	60	30	20	80	30	20	60	High	Low	Low	High	Low	Low
-Female	73	Ureter	Ureter	pT1	No	Yes	Grade 3	High Grade	No	Yes	No	No	86	No	86	LFU	No	86	80	80	80	30	30	30	290	290	295	100	100	100	High	Low	Low	High	Low	Low
-Male	59	Ureter	Ureter	pT1	No	Yes	Grade 1	High Grade	No	No	No	No	44	No	44	LFU	No	44	270	230	285	90	90	95	NA	NA	NA	NA	NA	NA	High	High	Low	High	High	Low
-Female	75	Ureter	Ureter	pT1	No	Yes	Grade 2	High Grade	No	No	No	No	84	No	84	NED	No	84	NA	NA	NA	NA	NA	NA	280	280	290	100	95	100	High	High	High	High	High	High
-Male	71	Ureter	Ureter	pT1	No	Yes	Grade 2	High Grade	Yes	Yes	No	No	86	No	86	NED	No	86	285	285	300	95	95	100	285	280	290	100	100	100	High	High	High	High	High	Low
-Female	73	Ureter	Ureter	pT1	No	Yes	Grade 2	High Grade	No	No	No	Yes	28	Yes	28	AWD	No	71	292.5	285	300	97.5	95	100	295	295	300	100	100	100	High	High	High	High	High	High
-Male	75	Ureter	Ureter	pT1	No	Yes	Grade 1	High Grade	No	No	No	No	49	No	49	NED	No	49	NA	NA	NA	NA	NA	NA	280	280	280	100	100	100	High	High	High	High	High	High
-Female	76	Ureter	Ureter	pT1	No	Yes	Grade 3	High Grade	No	No	No	No	42	No	41	DOC	No	42	185	180	190	90	90	90	295	295	295	100	100	100	High	High	Low	High	High	Low
-Female	74	Ureter	Ureter	pT1	No	Yes	Grade 3	High Grade	No	No	No	Yes	7	No	25	LFU	No	25	0	0	0	0	0	0	0	0	0	0	0	0	Low	Low	Low	Low	Low	Low
-Male	72	Ureter	Ureter	pT1	No	Yes	Grade 3	Low Grade	No	No	No	No	87	No	87	LFU	No	87	22.5	15	30	22.5	15	30	90	80	130	60	60	80	High	Low	Low	High	Low	Low
-Male	68	Pelvis	Pelvis	pT2	No	Yes	Grade 3	High Grade	No	Yes	No	No	100	No	100	NED	No	100	60	60	60	60	60	60	0	0	0	0	0	0	High	Low	Low	High	Low	Low
-Male	72	Pelvis-Ureter	NA	pT2	No	Yes	Grade 1	High Grade	Yes	Yes	No	Yes	3	Yes	3	DOD	Yes	8	292.5	285	300	97.5	95	100	265	260	265	95	95	95	High	High	High	High	High	High
-Male	78	Ureter	Ureter	pT2	No	Yes	Grade 1	High Grade	No	No	No	Yes	22	No	78	LFU	No	78	120	110	130	85	80	90	60	60	60	60	60	60	High	Low	Low	High	Low	Low
-Male	67	Ureter	Ureter	pT2	No	Yes	Grade 2	High Grade	No	No	No	Yes	7	Yes	7	DOD	Yes	49	170	140	170	65	60	80	260	225	270	100	90	100	High	High	Low	High	Low	Low
-Male	83	Ureter	Ureter	pT2	No	Yes	Grade 3	High Grade	No	No	No	No	52	No	52	NED	No	52	250	240	260	85	80	90	295	295	295	100	100	100	High	High	Low	High	Low	Low
-Male	71	Ureter	Ureter	pT2	No	Yes	Grade 3	High Grade	No	Yes	No	Yes	14	No	7	NED	No	14	290	290	290	100	100	100	280	270	290	100	100	100	High	High	High	High	High	High
-Male	79	Ureter	Ureter	pT2	No	Yes	Grade 3	High Grade	No	No	No	Yes	3	No	4	NED	No	10	250	250	270	95	95	95	280	275	285	97.5	95	100	High	High	Low	High	High	Low
-Male	67	Ureter	Ureter	pT2	No	Yes	Grade 3	High Grade	No	No	No	Yes	36	No	146	NED	No	146	85	85	85	45	45	45	210	200	220	90	90	95	High	Low	Low	High	Low	Low
-Male	63	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	High Grade	No	No	No	No	NA	Yes	6	DOD	Yes	25	75	70	80	75	70	80	30	30	40	30	30	40	High	Low	Low	High	Low	Low
-Female	74	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	High Grade	No	No	No	No	29	No	29	DOC	No	29	NA	NA	NA	NA	NA	NA	5	0	10	5	0	10	High	High	High	High	High	High
-Female	69	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	High Grade	No	No	No	Yes	37	Yes	37	DOD	Yes	66	125	125	135	65	65	65	160	160	170	90	90	90	High	Low	Low	High	Low	Low
-Female	58	Pelvis	Pelvis	pT3	Yes	Yes	Grade 2	High Grade	No	No	No	No	58	No	58	LFU	No	58	120	115	135	60	55	60	180	165	190	90	90	95	High	Low	Low	High	Low	Low
-Female	68	Pelvis	Pelvis	pT3	Yes	Yes	Grade 2	High Grade	No	No	No	No	83	No	83	LFU	No	83	0	0	0	0	0	0	0	0	0	0	0	0	Low	Low	Low	Low	Low	Low
-Male	79	Pelvis	Pelvis	pT3	Yes	Yes	Grade 2	High Grade	No	Yes	No	No	16	Yes	4	DOD	Yes	17	170	160	180	75	70	80	120	110	140	80	70	80	High	High	Low	High	Low	Low
-Female	78	Pelvis	Pelvis	pT3	Yes	Yes	Grade 2	Low Grade	No	No	No	No	107	No	107	NED	No	107	177.5	170	185	90	85	95	180	175	190	90	85	95	High	High	Low	High	High	Low
-Male	70	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	High Grade	Yes	Yes	No	Yes	6	Yes	6	DOD	Yes	94	260	260	260	90	90	90	NA	NA	NA	NA	NA	NA	High	High	Low	High	High	Low
-Female	74	Pelvis	Pelvis	pT3	Yes	Yes	Grade 2	High Grade	No	No	No	Yes	13	No	69	NED	No	69	270	270	270	90	90	90	130	120	140	100	100	100	High	High	Low	High	High	Low
-Female	75	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	High Grade	No	No	No	Yes	4	Yes	4	DOD	Yes	8	130	60	150	50	40	80	280	275	285	95	95	95	High	Low	Low	High	Low	Low
-Male	53	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	Low Grade	No	No	No	No	48	No	43	NED	No	48	0	0	0	0	0	0	260	255	280	95	95	100	Low	Low	Low	Low	Low	Low
-Male	67	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	Low Grade	No	No	No	No	45	No	39	NED	No	45	120	90	120	100	90	100	NA	NA	NA	NA	NA	NA	High	Low	Low	High	High	High
-Male	80	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	High Grade	No	Yes	NA	No	10	Yes	3	DOD	Yes	10	280	280	295	95	95	100	285	275	290	100	100	100	High	High	High	High	High	Low
-Male	80	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	High Grade	No	No	No	No	9	Yes	3	DOD	Yes	9	NA	NA	NA	NA	NA	NA	285	280	290	100	100	100	High	High	High	High	High	High
-Female	79	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	High Grade	Yes	Yes	No	No	10	No	4	AWD	No	10	290	275	290	100	95	100	290	230	290	100	80	100	High	High	High	High	High	High
-Male	58	Pelvis	Pelvis	pT3	Yes	Yes	Grade 2	High Grade	No	Yes	No	NA	NA	Yes	6	DOD	Yes	27	65	30	100	50	30	70	75	70	80	50	50	50	High	Low	Low	High	Low	Low
-Male	82	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	High Grade	No	Yes	No	No	45	Yes	45	LFU	No	45	NA	NA	NA	NA	NA	NA	0	0	0	0	0	0	High	High	High	High	High	High
-Male	84	Pelvis	Pelvis	pT3	Yes	Yes	Grade 2	High Grade	No	No	No	Yes	11	No	80	LFU	No	80	NA	NA	NA	NA	NA	NA	205	180	215	95	90	95	High	High	High	High	High	High
-Male	65	Pelvis	Pelvis	pT3	Yes	Yes	Grade 3	High Grade	Yes	Yes	No	No	14	Yes	0	DOD	Yes	14	245	240	250	85	80	90	270	260	280	100	100	100	High	High	Low	High	Low	Low
-Female	81	Pelvis-Ureter	NA	pT3	Yes	Yes	Grade 3	High Grade	No	No	No	Yes	5	Yes	11	AWD	No	15	60	0	70	60	0	70	215	210	250	90	90	90	High	Low	Low	High	Low	Low
-Female	75	Pelvis-Ureter	NA	pT3	Yes	Yes	Grade 3	High Grade	No	No	No	Yes	8	No	30	NED	No	36	270	270	270	90	90	90	285	280	290	100	100	100	High	High	Low	High	High	Low
-Female	79	Pelvis-Ureter	NA	pT3	Yes	Yes	Grade 3	High Grade	No	Yes	NA	No	8	No	3	NED	No	8	290	290	290	100	100	100	255	250	265	95	95	95	High	High	High	High	High	High
-Male	79	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	No	Yes	No	No	10	Yes	8	DOD	Yes	10	NA	NA	NA	NA	NA	NA	205	185	230	100	95	100	High	High	High	High	High	High
-Male	85	Ureter	Ureter	pT3	Yes	Yes	Grade 2	High Grade	No	Yes	No	Yes	6	Yes	6	DOD	Yes	12	90	15	95	45	15	60	100	100	170	60	50	90	High	Low	Low	High	Low	Low
-Male	82	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	Yes	Yes	No	NA	NA	Yes	13	DOD	Yes	15	90	60	90	40	20	40	80	60	100	70	60	80	High	Low	Low	High	Low	Low
-Female	71	Ureter	Ureter	pT3	Yes	Yes	Grade 2	High Grade	No	Yes	No	No	33	Yes	22	DOD	Yes	33	60	5	90	40	5	90	10	5	10	10	5	10	High	Low	Low	High	Low	Low
-Female	79	Ureter	Ureter	pT3	Yes	Yes	Grade 2	High Grade	No	No	No	Yes	41	Yes	41	DOD	Yes	60	100	80	110	80	70	85	160	160	170	90	90	90	High	Low	Low	High	Low	Low
-Male	76	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	No	No	No	Yes	22	Yes	22	DOD	Yes	63	275	180	285	95	80	95	190	180	200	90	90	90	High	High	Low	High	High	Low
-Male	61	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	Yes	Yes	Yes	No	4	Yes	2	LFU	No	4	290	290	300	100	100	100	230	215	285	95	90	95	High	High	High	High	High	High
-Female	74	Ureter	Ureter	pT3	Yes	Yes	Grade 3	Low Grade	Yes	Yes	Yes	No	89	No	89	NED	No	89	277.5	270	285	92.5	90	95	262.5	255	270	87.5	85	90	High	High	High	High	High	Low
-Male	78	Ureter	Ureter	pT3	Yes	Yes	Grade 2	High Grade	No	Yes	No	No	15	Yes	6	DOD	Yes	15	292.5	285	300	97.5	95	100	270	265	290	100	95	100	High	High	High	High	High	High
-Male	71	Ureter	Ureter	pT3	Yes	Yes	Grade 2	High Grade	No	Yes	No	No	71	Yes	67	DOD	Yes	71	282.5	280	285	95	95	95	275	240	285	95	80	95	High	High	High	High	High	Low
-Female	65	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	No	Yes	No	No	16	Yes	13	DOD	Yes	16	290	250	290	100	90	100	180	110	200	70	50	70	High	High	High	High	High	High
-Male	65	Ureter	Ureter	pT3	Yes	Yes	Grade 2	High Grade	No	Yes	No	No	14	Yes	2	DOD	Yes	14	285	285	285	95	95	95	240	240	240	80	80	80	High	High	High	High	High	Low
-Female	87	Ureter	Ureter	pT3	Yes	Yes	Grade 2	High Grade	No	Yes	No	No	21	Yes	3	LFU	No	21	180	170	210	60	60	70	285	285	290	100	100	100	High	High	Low	High	Low	Low
-Female	78	Ureter	Ureter	pT3	Yes	Yes	Grade 2	High Grade	No	No	No	Yes	17	No	25	LFU	No	25	285	270	285	95	90	95	295	290	295	100	100	100	High	High	High	High	High	Low
-Male	76	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	No	Yes	No	Yes	3	No	49	NED	No	49	267.5	260	275	92.5	90	95	300	300	300	100	100	100	High	High	Low	High	High	Low
-Male	68	Ureter	Ureter	pT3	Yes	Yes	Grade 3	Low Grade	No	Yes	No	No	47	No	47	NED	No	47	NA	NA	NA	NA	NA	NA	280	260	295	100	90	100	High	High	High	High	High	High
-Female	65	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	No	No	No	Yes	26	No	35	NED	No	40	160	155	180	90	80	100	240	240	240	95	95	95	High	Low	Low	High	High	Low
-Male	66	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	Yes	Yes	Yes	No	30	Yes	1	AWD	No	30	260	260	270	100	100	100	240	230	260	80	80	90	High	High	Low	High	High	High
-Male	73	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	No	No	No	No	14	Yes	8	DOD	Yes	14	NA	NA	NA	NA	NA	NA	295	295	295	100	100	100	High	High	High	High	High	High
-Male	60	Ureter	Ureter	pT3	Yes	Yes	Grade 2	High Grade	No	No	No	Yes	4	No	9	NED	No	15	NA	NA	NA	NA	NA	NA	130	130	130	100	100	100	High	High	High	High	High	High
-Female	71	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	No	Yes	No	Yes	6	Yes	6	DOD	Yes	8	0	0	0	0	0	0	20	15	60	20	15	50	Low	Low	Low	Low	Low	Low
-Male	54	Ureter	Ureter	pT3	Yes	Yes	Grade 3	Low Grade	No	Yes	No	No	173	No	173	NED	No	173	10	10	10	10	10	10	10	0	35	10	0	25	High	Low	Low	High	Low	Low
-Male	67	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	No	Yes	No	No	42	Yes	40	DOD	Yes	42	NA	NA	NA	NA	NA	NA	180	130	190	80	50	80	High	High	High	High	High	High
-Male	67	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	No	Yes	No	Yes	10	Yes	10	LFU	No	105	NA	NA	NA	NA	NA	NA	170	165	170	90	85	90	High	High	High	High	High	High
-Male	57	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	No	Yes	No	No	125	No	125	NED	No	125	NA	NA	NA	NA	NA	NA	90	90	95	90	90	95	High	High	High	High	High	High
-Male	73	Ureter	Ureter	pT3	Yes	Yes	Grade 3	High Grade	No	Yes	No	Yes	6	Yes	6	DOD	Yes	30	0	0	0	0	0	0	5	0	5	5	0	5	Low	Low	Low	Low	Low	Low
-Female	72	Pelvis	Pelvis	pT4	Yes	Yes	Grade 3	High Grade	No	Yes	No	No	NA	Yes	2	DOD	Yes	4	5	0	5	5	0	5	0	0	0	0	0	0	High	Low	Low	High	Low	Low
-Female	72	Pelvis	Pelvis	pT4	Yes	Yes	Grade 3	High Grade	Yes	Yes	Yes	No	88	Yes	1	DOD	Yes	88	22.5	10	35	15	10	20	160	160	190	90	90	90	High	Low	Low	High	Low	Low
-Male	66	Pelvis	Pelvis	pT4	Yes	Yes	Grade 3	High Grade	No	Yes	No	No	53	No	53	NED	No	53	NA	NA	NA	NA	NA	NA	280	275	290	100	100	100	High	High	High	High	High	High
-Male	58	Pelvis	Pelvis	pT4	Yes	Yes	Grade 3	Low Grade	No	Yes	No	No	44	Yes	5	DOD	Yes	44	290	290	290	100	100	100	260	260	260	90	90	90	High	High	High	High	High	High
-Female	68	Pelvis	Pelvis	pT4	Yes	Yes	Grade 1	High Grade	Yes	Yes	No	No	2	Yes	0	DOD	Yes	3	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	High	High	High	High	High	High
-Female	57	Ureter	Ureter	pT4	Yes	Yes	Grade 3	High Grade	Yes	Yes	No	No	49	Yes	21	DOD	Yes	49	0	0	0	0	0	0	0	0	0	0	0	0	Low	Low	Low	Low	Low	Low
-Male	56	Pelvis	Pelvis	pTa	No	No	Grade 2	High Grade	No	No	No	Yes	61	No	110	NED	No	110	NA	NA	NA	NA	NA	NA	50	40	80	50	40	80	High	High	High	High	High	High
-Male	62	Pelvis	Pelvis	pTa	No	No	Grade 2	High Grade	No	No	No	No	139	No	139	NED	No	139	0	0	0	0	0	0	130	120	140	90	85	90	Low	Low	Low	Low	Low	Low
-Female	65	Pelvis	Pelvis	pTa	No	No	Grade 3	High Grade	No	No	No	No	78	No	78	LFU	No	78	160	160	160	60	60	60	280	275	280	100	100	100	High	Low	Low	High	Low	Low
-Male	79	Pelvis	Pelvis	pTa	No	No	Grade 2	Low Grade	No	No	No	No	66	Yes	55	LFU	No	66	NA	NA	NA	NA	NA	NA	0	0	0	0	0	0	High	High	High	High	High	High
-Female	81	Pelvis	Pelvis	pTa	No	No	Grade 3	High Grade	No	No	No	No	117	No	117	NED	No	117	80	70	85	80	70	85	0	0	20	0	0	20	High	Low	Low	High	Low	Low
-Male	57	Pelvis	Pelvis	pTa	No	No	Grade 1	High Grade	No	No	No	No	27	No	27	LFU	No	27	270	270	270	92.5	90	95	300	300	300	100	100	100	High	High	Low	High	High	Low
-Female	84	Pelvis	Pelvis	pTa	No	No	Grade 2	High Grade	No	No	No	Yes	21	No	59	NED	No	59	280	280	285	95	95	95	285	285	285	95	95	95	High	High	High	High	High	Low
-Male	55	Pelvis	Pelvis	pTa	No	No	Grade 2	High Grade	No	No	No	Yes	23	No	47	NED	No	47	250	235	270	95	90	95	197.5	190	205	75	75	75	High	High	Low	High	High	Low
-Male	67	Pelvis	Pelvis	pTa	No	No	Grade 2	High Grade	No	No	No	No	25	No	25	LFU	No	25	250	190	285	90	80	95	195	180	205	95	90	95	High	High	Low	High	High	Low
-Male	77	Pelvis	Pelvis	pTa	No	No	Grade 2	High Grade	No	No	No	No	44	No	37	AWD	No	44	10	0	10	10	0	10	190	190	190	90	90	90	High	Low	Low	High	Low	Low
-Male	67	Pelvis	Pelvis	pTa	No	No	Grade 2	High Grade	NA	No	NA	No	28	No	24	NED	No	28	182.5	175	190	87.5	85	90	230	170	230	90	90	100	High	High	Low	High	High	Low
-Female	66	Ureter	Ureter	pTa	No	No	Grade 2	Low Grade	No	No	No	No	134	No	134	NED	No	134	50	40	80	50	40	55	30	10	40	30	10	30	High	Low	Low	High	Low	Low
-Female	58	Ureter	Ureter	pTa	No	No	Grade 3	High Grade	No	No	No	No	87	No	87	DOC	No	87	100	80	110	90	70	90	0	0	0	0	0	0	High	Low	Low	High	High	Low
-Male	61	Ureter	Ureter	pTa	No	No	Grade 2	High Grade	No	No	No	No	113	No	113	NED	No	113	70	60	80	70	60	80	15	0	15	15	0	15	High	Low	Low	High	Low	Low
-Male	48	Ureter	Ureter	pTa	No	No	Grade 2	Low Grade	No	No	No	No	53	No	53	LFU	No	53	120	120	120	60	60	60	40	15	60	30	15	60	High	Low	Low	High	Low	Low
-Female	72	Ureter	Ureter	pTa	No	No	Grade 2	High Grade	No	No	No	No	46	No	46	LFU	No	46	210	190	235	90	80	95	242.5	240	245	87.5	80	95	High	High	Low	High	High	Low
-Female	76	Ureter	Ureter	pTa	No	No	Grade 1	High Grade	No	No	No	No	60	No	60	NED	No	60	300	300	300	100	100	100	230	190	240	100	80	100	High	High	High	High	High	High
-Male	67	Ureter	Ureter	pTa	No	No	Grade 2	High Grade	No	No	No	No	36	No	30	NED	No	36	260	220	270	95	90	95	270	260	295	100	100	100	High	High	Low	High	High	Low
-Male	76	Ureter	Ureter	pTa	No	No	Grade 3	High Grade	NA	No	NA	No	31	No	25	NED	No	31	285	285	285	95	95	95	172.5	170	175	97.5	95	100	High	High	High	High	High	Low
+sex,age,location,location2,pT,pT.2,pT.a,grade,WHO.grade,lymph.nodes,lvi,metastasis,bladder.recur,fu.recur,tumor.prog,fu.prog,outcome,dod,fu.outcome,tumor.h.med,tumor.h.min,tumor.h.max,tumor.pos.med,tumor.pos.min,tumor.pos.max,normal.h.med,normal.h.min,normal.h.max,normal.pos.med,normal.pos.min,normal.pos.max,tumor.h.0,tumor.h.p50,tumor.h.q3,tumor.pos.0,tumor.pos.p50,tumor.pos.q3
+Male,56,Pelvis,Pelvis,pT1,No,Yes,Grade 2,High Grade,No,No,No,Yes,5,No,137,NED,No,137,140,90,170,90,50,90,125,110,150,75,70,90,High,Low,Low,High,High,Low
+Female,81,Pelvis,Pelvis,pT1,No,Yes,Grade 3,Low Grade,No,No,No,No,83,No,83,LFU,No,83,60,60,70,60,60,70,20,10,20,20,10,20,High,Low,Low,High,Low,Low
+Female,76,Pelvis,Pelvis,pT1,No,Yes,Grade 2,High Grade,No,No,No,Yes,4,No,79,NED,No,79,285,280,285,95,95,95,260,240,265,100,100,100,High,High,High,High,High,Low
+Male,53,Pelvis,Pelvis,pT1,No,Yes,Grade 3,Low Grade,No,No,No,No,59,No,59,NED,No,59,150,20,150,90,20,90,NA,NA,NA,NA,NA,NA,High,Low,Low,High,High,Low
+Female,81,Pelvis,Pelvis,pT1,No,Yes,Grade 2,High Grade,NA,No,NA,No,36,No,27,NED,No,36,NA,NA,NA,NA,NA,NA,210,200,220,100,95,100,High,High,High,High,High,High
+Female,51,Pelvis,Pelvis,pT1,No,Yes,Grade 2,Low Grade,No,No,No,No,158,No,158,NED,No,158,0,0,0,0,0,0,0,0,0,0,0,0,Low,Low,Low,Low,Low,Low
+Male,52,Pelvis,Pelvis,pT1,No,Yes,Grade 2,High Grade,No,No,No,Yes,8,No,129,LFU,No,129,NA,NA,NA,NA,NA,NA,0,0,15,0,0,15,High,High,High,High,High,High
+Male,65,Pelvis,Pelvis,pT1,No,Yes,Grade 2,Low Grade,No,No,No,No,116,No,116,LFU,No,116,15,10,20,15,10,20,15,5,30,15,5,30,High,Low,Low,High,Low,Low
+Male,72,Pelvis,Pelvis,pT1,No,Yes,Grade 3,High Grade,No,Yes,No,Yes,7,No,28,LFU,No,28,50,40,60,50,40,60,30,20,80,30,20,60,High,Low,Low,High,Low,Low
+Female,73,Ureter,Ureter,pT1,No,Yes,Grade 3,High Grade,No,Yes,No,No,86,No,86,LFU,No,86,80,80,80,30,30,30,290,290,295,100,100,100,High,Low,Low,High,Low,Low
+Male,59,Ureter,Ureter,pT1,No,Yes,Grade 1,High Grade,No,No,No,No,44,No,44,LFU,No,44,270,230,285,90,90,95,NA,NA,NA,NA,NA,NA,High,High,Low,High,High,Low
+Female,75,Ureter,Ureter,pT1,No,Yes,Grade 2,High Grade,No,No,No,No,84,No,84,NED,No,84,NA,NA,NA,NA,NA,NA,280,280,290,100,95,100,High,High,High,High,High,High
+Male,71,Ureter,Ureter,pT1,No,Yes,Grade 2,High Grade,Yes,Yes,No,No,86,No,86,NED,No,86,285,285,300,95,95,100,285,280,290,100,100,100,High,High,High,High,High,Low
+Female,73,Ureter,Ureter,pT1,No,Yes,Grade 2,High Grade,No,No,No,Yes,28,Yes,28,AWD,No,71,292.5,285,300,97.5,95,100,295,295,300,100,100,100,High,High,High,High,High,High
+Male,75,Ureter,Ureter,pT1,No,Yes,Grade 1,High Grade,No,No,No,No,49,No,49,NED,No,49,NA,NA,NA,NA,NA,NA,280,280,280,100,100,100,High,High,High,High,High,High
+Female,76,Ureter,Ureter,pT1,No,Yes,Grade 3,High Grade,No,No,No,No,42,No,41,DOC,No,42,185,180,190,90,90,90,295,295,295,100,100,100,High,High,Low,High,High,Low
+Female,74,Ureter,Ureter,pT1,No,Yes,Grade 3,High Grade,No,No,No,Yes,7,No,25,LFU,No,25,0,0,0,0,0,0,0,0,0,0,0,0,Low,Low,Low,Low,Low,Low
+Male,72,Ureter,Ureter,pT1,No,Yes,Grade 3,Low Grade,No,No,No,No,87,No,87,LFU,No,87,22.5,15,30,22.5,15,30,90,80,130,60,60,80,High,Low,Low,High,Low,Low
+Male,68,Pelvis,Pelvis,pT2,No,Yes,Grade 3,High Grade,No,Yes,No,No,100,No,100,NED,No,100,60,60,60,60,60,60,0,0,0,0,0,0,High,Low,Low,High,Low,Low
+Male,72,Pelvis-Ureter,NA,pT2,No,Yes,Grade 1,High Grade,Yes,Yes,No,Yes,3,Yes,3,DOD,Yes,8,292.5,285,300,97.5,95,100,265,260,265,95,95,95,High,High,High,High,High,High
+Male,78,Ureter,Ureter,pT2,No,Yes,Grade 1,High Grade,No,No,No,Yes,22,No,78,LFU,No,78,120,110,130,85,80,90,60,60,60,60,60,60,High,Low,Low,High,Low,Low
+Male,67,Ureter,Ureter,pT2,No,Yes,Grade 2,High Grade,No,No,No,Yes,7,Yes,7,DOD,Yes,49,170,140,170,65,60,80,260,225,270,100,90,100,High,High,Low,High,Low,Low
+Male,83,Ureter,Ureter,pT2,No,Yes,Grade 3,High Grade,No,No,No,No,52,No,52,NED,No,52,250,240,260,85,80,90,295,295,295,100,100,100,High,High,Low,High,Low,Low
+Male,71,Ureter,Ureter,pT2,No,Yes,Grade 3,High Grade,No,Yes,No,Yes,14,No,7,NED,No,14,290,290,290,100,100,100,280,270,290,100,100,100,High,High,High,High,High,High
+Male,79,Ureter,Ureter,pT2,No,Yes,Grade 3,High Grade,No,No,No,Yes,3,No,4,NED,No,10,250,250,270,95,95,95,280,275,285,97.5,95,100,High,High,Low,High,High,Low
+Male,67,Ureter,Ureter,pT2,No,Yes,Grade 3,High Grade,No,No,No,Yes,36,No,146,NED,No,146,85,85,85,45,45,45,210,200,220,90,90,95,High,Low,Low,High,Low,Low
+Male,63,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,High Grade,No,No,No,No,NA,Yes,6,DOD,Yes,25,75,70,80,75,70,80,30,30,40,30,30,40,High,Low,Low,High,Low,Low
+Female,74,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,High Grade,No,No,No,No,29,No,29,DOC,No,29,NA,NA,NA,NA,NA,NA,5,0,10,5,0,10,High,High,High,High,High,High
+Female,69,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,High Grade,No,No,No,Yes,37,Yes,37,DOD,Yes,66,125,125,135,65,65,65,160,160,170,90,90,90,High,Low,Low,High,Low,Low
+Female,58,Pelvis,Pelvis,pT3,Yes,Yes,Grade 2,High Grade,No,No,No,No,58,No,58,LFU,No,58,120,115,135,60,55,60,180,165,190,90,90,95,High,Low,Low,High,Low,Low
+Female,68,Pelvis,Pelvis,pT3,Yes,Yes,Grade 2,High Grade,No,No,No,No,83,No,83,LFU,No,83,0,0,0,0,0,0,0,0,0,0,0,0,Low,Low,Low,Low,Low,Low
+Male,79,Pelvis,Pelvis,pT3,Yes,Yes,Grade 2,High Grade,No,Yes,No,No,16,Yes,4,DOD,Yes,17,170,160,180,75,70,80,120,110,140,80,70,80,High,High,Low,High,Low,Low
+Female,78,Pelvis,Pelvis,pT3,Yes,Yes,Grade 2,Low Grade,No,No,No,No,107,No,107,NED,No,107,177.5,170,185,90,85,95,180,175,190,90,85,95,High,High,Low,High,High,Low
+Male,70,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,High Grade,Yes,Yes,No,Yes,6,Yes,6,DOD,Yes,94,260,260,260,90,90,90,NA,NA,NA,NA,NA,NA,High,High,Low,High,High,Low
+Female,74,Pelvis,Pelvis,pT3,Yes,Yes,Grade 2,High Grade,No,No,No,Yes,13,No,69,NED,No,69,270,270,270,90,90,90,130,120,140,100,100,100,High,High,Low,High,High,Low
+Female,75,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,High Grade,No,No,No,Yes,4,Yes,4,DOD,Yes,8,130,60,150,50,40,80,280,275,285,95,95,95,High,Low,Low,High,Low,Low
+Male,53,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,Low Grade,No,No,No,No,48,No,43,NED,No,48,0,0,0,0,0,0,260,255,280,95,95,100,Low,Low,Low,Low,Low,Low
+Male,67,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,Low Grade,No,No,No,No,45,No,39,NED,No,45,120,90,120,100,90,100,NA,NA,NA,NA,NA,NA,High,Low,Low,High,High,High
+Male,80,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,High Grade,No,Yes,NA,No,10,Yes,3,DOD,Yes,10,280,280,295,95,95,100,285,275,290,100,100,100,High,High,High,High,High,Low
+Male,80,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,High Grade,No,No,No,No,9,Yes,3,DOD,Yes,9,NA,NA,NA,NA,NA,NA,285,280,290,100,100,100,High,High,High,High,High,High
+Female,79,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,High Grade,Yes,Yes,No,No,10,No,4,AWD,No,10,290,275,290,100,95,100,290,230,290,100,80,100,High,High,High,High,High,High
+Male,58,Pelvis,Pelvis,pT3,Yes,Yes,Grade 2,High Grade,No,Yes,No,NA,NA,Yes,6,DOD,Yes,27,65,30,100,50,30,70,75,70,80,50,50,50,High,Low,Low,High,Low,Low
+Male,82,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,High Grade,No,Yes,No,No,45,Yes,45,LFU,No,45,NA,NA,NA,NA,NA,NA,0,0,0,0,0,0,High,High,High,High,High,High
+Male,84,Pelvis,Pelvis,pT3,Yes,Yes,Grade 2,High Grade,No,No,No,Yes,11,No,80,LFU,No,80,NA,NA,NA,NA,NA,NA,205,180,215,95,90,95,High,High,High,High,High,High
+Male,65,Pelvis,Pelvis,pT3,Yes,Yes,Grade 3,High Grade,Yes,Yes,No,No,14,Yes,0,DOD,Yes,14,245,240,250,85,80,90,270,260,280,100,100,100,High,High,Low,High,Low,Low
+Female,81,Pelvis-Ureter,NA,pT3,Yes,Yes,Grade 3,High Grade,No,No,No,Yes,5,Yes,11,AWD,No,15,60,0,70,60,0,70,215,210,250,90,90,90,High,Low,Low,High,Low,Low
+Female,75,Pelvis-Ureter,NA,pT3,Yes,Yes,Grade 3,High Grade,No,No,No,Yes,8,No,30,NED,No,36,270,270,270,90,90,90,285,280,290,100,100,100,High,High,Low,High,High,Low
+Female,79,Pelvis-Ureter,NA,pT3,Yes,Yes,Grade 3,High Grade,No,Yes,NA,No,8,No,3,NED,No,8,290,290,290,100,100,100,255,250,265,95,95,95,High,High,High,High,High,High
+Male,79,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,No,Yes,No,No,10,Yes,8,DOD,Yes,10,NA,NA,NA,NA,NA,NA,205,185,230,100,95,100,High,High,High,High,High,High
+Male,85,Ureter,Ureter,pT3,Yes,Yes,Grade 2,High Grade,No,Yes,No,Yes,6,Yes,6,DOD,Yes,12,90,15,95,45,15,60,100,100,170,60,50,90,High,Low,Low,High,Low,Low
+Male,82,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,Yes,Yes,No,NA,NA,Yes,13,DOD,Yes,15,90,60,90,40,20,40,80,60,100,70,60,80,High,Low,Low,High,Low,Low
+Female,71,Ureter,Ureter,pT3,Yes,Yes,Grade 2,High Grade,No,Yes,No,No,33,Yes,22,DOD,Yes,33,60,5,90,40,5,90,10,5,10,10,5,10,High,Low,Low,High,Low,Low
+Female,79,Ureter,Ureter,pT3,Yes,Yes,Grade 2,High Grade,No,No,No,Yes,41,Yes,41,DOD,Yes,60,100,80,110,80,70,85,160,160,170,90,90,90,High,Low,Low,High,Low,Low
+Male,76,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,No,No,No,Yes,22,Yes,22,DOD,Yes,63,275,180,285,95,80,95,190,180,200,90,90,90,High,High,Low,High,High,Low
+Male,61,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,Yes,Yes,Yes,No,4,Yes,2,LFU,No,4,290,290,300,100,100,100,230,215,285,95,90,95,High,High,High,High,High,High
+Female,74,Ureter,Ureter,pT3,Yes,Yes,Grade 3,Low Grade,Yes,Yes,Yes,No,89,No,89,NED,No,89,277.5,270,285,92.5,90,95,262.5,255,270,87.5,85,90,High,High,High,High,High,Low
+Male,78,Ureter,Ureter,pT3,Yes,Yes,Grade 2,High Grade,No,Yes,No,No,15,Yes,6,DOD,Yes,15,292.5,285,300,97.5,95,100,270,265,290,100,95,100,High,High,High,High,High,High
+Male,71,Ureter,Ureter,pT3,Yes,Yes,Grade 2,High Grade,No,Yes,No,No,71,Yes,67,DOD,Yes,71,282.5,280,285,95,95,95,275,240,285,95,80,95,High,High,High,High,High,Low
+Female,65,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,No,Yes,No,No,16,Yes,13,DOD,Yes,16,290,250,290,100,90,100,180,110,200,70,50,70,High,High,High,High,High,High
+Male,65,Ureter,Ureter,pT3,Yes,Yes,Grade 2,High Grade,No,Yes,No,No,14,Yes,2,DOD,Yes,14,285,285,285,95,95,95,240,240,240,80,80,80,High,High,High,High,High,Low
+Female,87,Ureter,Ureter,pT3,Yes,Yes,Grade 2,High Grade,No,Yes,No,No,21,Yes,3,LFU,No,21,180,170,210,60,60,70,285,285,290,100,100,100,High,High,Low,High,Low,Low
+Female,78,Ureter,Ureter,pT3,Yes,Yes,Grade 2,High Grade,No,No,No,Yes,17,No,25,LFU,No,25,285,270,285,95,90,95,295,290,295,100,100,100,High,High,High,High,High,Low
+Male,76,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,No,Yes,No,Yes,3,No,49,NED,No,49,267.5,260,275,92.5,90,95,300,300,300,100,100,100,High,High,Low,High,High,Low
+Male,68,Ureter,Ureter,pT3,Yes,Yes,Grade 3,Low Grade,No,Yes,No,No,47,No,47,NED,No,47,NA,NA,NA,NA,NA,NA,280,260,295,100,90,100,High,High,High,High,High,High
+Female,65,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,No,No,No,Yes,26,No,35,NED,No,40,160,155,180,90,80,100,240,240,240,95,95,95,High,Low,Low,High,High,Low
+Male,66,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,Yes,Yes,Yes,No,30,Yes,1,AWD,No,30,260,260,270,100,100,100,240,230,260,80,80,90,High,High,Low,High,High,High
+Male,73,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,No,No,No,No,14,Yes,8,DOD,Yes,14,NA,NA,NA,NA,NA,NA,295,295,295,100,100,100,High,High,High,High,High,High
+Male,60,Ureter,Ureter,pT3,Yes,Yes,Grade 2,High Grade,No,No,No,Yes,4,No,9,NED,No,15,NA,NA,NA,NA,NA,NA,130,130,130,100,100,100,High,High,High,High,High,High
+Female,71,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,No,Yes,No,Yes,6,Yes,6,DOD,Yes,8,0,0,0,0,0,0,20,15,60,20,15,50,Low,Low,Low,Low,Low,Low
+Male,54,Ureter,Ureter,pT3,Yes,Yes,Grade 3,Low Grade,No,Yes,No,No,173,No,173,NED,No,173,10,10,10,10,10,10,10,0,35,10,0,25,High,Low,Low,High,Low,Low
+Male,67,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,No,Yes,No,No,42,Yes,40,DOD,Yes,42,NA,NA,NA,NA,NA,NA,180,130,190,80,50,80,High,High,High,High,High,High
+Male,67,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,No,Yes,No,Yes,10,Yes,10,LFU,No,105,NA,NA,NA,NA,NA,NA,170,165,170,90,85,90,High,High,High,High,High,High
+Male,57,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,No,Yes,No,No,125,No,125,NED,No,125,NA,NA,NA,NA,NA,NA,90,90,95,90,90,95,High,High,High,High,High,High
+Male,73,Ureter,Ureter,pT3,Yes,Yes,Grade 3,High Grade,No,Yes,No,Yes,6,Yes,6,DOD,Yes,30,0,0,0,0,0,0,5,0,5,5,0,5,Low,Low,Low,Low,Low,Low
+Female,72,Pelvis,Pelvis,pT4,Yes,Yes,Grade 3,High Grade,No,Yes,No,No,NA,Yes,2,DOD,Yes,4,5,0,5,5,0,5,0,0,0,0,0,0,High,Low,Low,High,Low,Low
+Female,72,Pelvis,Pelvis,pT4,Yes,Yes,Grade 3,High Grade,Yes,Yes,Yes,No,88,Yes,1,DOD,Yes,88,22.5,10,35,15,10,20,160,160,190,90,90,90,High,Low,Low,High,Low,Low
+Male,66,Pelvis,Pelvis,pT4,Yes,Yes,Grade 3,High Grade,No,Yes,No,No,53,No,53,NED,No,53,NA,NA,NA,NA,NA,NA,280,275,290,100,100,100,High,High,High,High,High,High
+Male,58,Pelvis,Pelvis,pT4,Yes,Yes,Grade 3,Low Grade,No,Yes,No,No,44,Yes,5,DOD,Yes,44,290,290,290,100,100,100,260,260,260,90,90,90,High,High,High,High,High,High
+Female,68,Pelvis,Pelvis,pT4,Yes,Yes,Grade 1,High Grade,Yes,Yes,No,No,2,Yes,0,DOD,Yes,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,High,High,High,High,High,High
+Female,57,Ureter,Ureter,pT4,Yes,Yes,Grade 3,High Grade,Yes,Yes,No,No,49,Yes,21,DOD,Yes,49,0,0,0,0,0,0,0,0,0,0,0,0,Low,Low,Low,Low,Low,Low
+Male,56,Pelvis,Pelvis,pTa,No,No,Grade 2,High Grade,No,No,No,Yes,61,No,110,NED,No,110,NA,NA,NA,NA,NA,NA,50,40,80,50,40,80,High,High,High,High,High,High
+Male,62,Pelvis,Pelvis,pTa,No,No,Grade 2,High Grade,No,No,No,No,139,No,139,NED,No,139,0,0,0,0,0,0,130,120,140,90,85,90,Low,Low,Low,Low,Low,Low
+Female,65,Pelvis,Pelvis,pTa,No,No,Grade 3,High Grade,No,No,No,No,78,No,78,LFU,No,78,160,160,160,60,60,60,280,275,280,100,100,100,High,Low,Low,High,Low,Low
+Male,79,Pelvis,Pelvis,pTa,No,No,Grade 2,Low Grade,No,No,No,No,66,Yes,55,LFU,No,66,NA,NA,NA,NA,NA,NA,0,0,0,0,0,0,High,High,High,High,High,High
+Female,81,Pelvis,Pelvis,pTa,No,No,Grade 3,High Grade,No,No,No,No,117,No,117,NED,No,117,80,70,85,80,70,85,0,0,20,0,0,20,High,Low,Low,High,Low,Low
+Male,57,Pelvis,Pelvis,pTa,No,No,Grade 1,High Grade,No,No,No,No,27,No,27,LFU,No,27,270,270,270,92.5,90,95,300,300,300,100,100,100,High,High,Low,High,High,Low
+Female,84,Pelvis,Pelvis,pTa,No,No,Grade 2,High Grade,No,No,No,Yes,21,No,59,NED,No,59,280,280,285,95,95,95,285,285,285,95,95,95,High,High,High,High,High,Low
+Male,55,Pelvis,Pelvis,pTa,No,No,Grade 2,High Grade,No,No,No,Yes,23,No,47,NED,No,47,250,235,270,95,90,95,197.5,190,205,75,75,75,High,High,Low,High,High,Low
+Male,67,Pelvis,Pelvis,pTa,No,No,Grade 2,High Grade,No,No,No,No,25,No,25,LFU,No,25,250,190,285,90,80,95,195,180,205,95,90,95,High,High,Low,High,High,Low
+Male,77,Pelvis,Pelvis,pTa,No,No,Grade 2,High Grade,No,No,No,No,44,No,37,AWD,No,44,10,0,10,10,0,10,190,190,190,90,90,90,High,Low,Low,High,Low,Low
+Male,67,Pelvis,Pelvis,pTa,No,No,Grade 2,High Grade,NA,No,NA,No,28,No,24,NED,No,28,182.5,175,190,87.5,85,90,230,170,230,90,90,100,High,High,Low,High,High,Low
+Female,66,Ureter,Ureter,pTa,No,No,Grade 2,Low Grade,No,No,No,No,134,No,134,NED,No,134,50,40,80,50,40,55,30,10,40,30,10,30,High,Low,Low,High,Low,Low
+Female,58,Ureter,Ureter,pTa,No,No,Grade 3,High Grade,No,No,No,No,87,No,87,DOC,No,87,100,80,110,90,70,90,0,0,0,0,0,0,High,Low,Low,High,High,Low
+Male,61,Ureter,Ureter,pTa,No,No,Grade 2,High Grade,No,No,No,No,113,No,113,NED,No,113,70,60,80,70,60,80,15,0,15,15,0,15,High,Low,Low,High,Low,Low
+Male,48,Ureter,Ureter,pTa,No,No,Grade 2,Low Grade,No,No,No,No,53,No,53,LFU,No,53,120,120,120,60,60,60,40,15,60,30,15,60,High,Low,Low,High,Low,Low
+Female,72,Ureter,Ureter,pTa,No,No,Grade 2,High Grade,No,No,No,No,46,No,46,LFU,No,46,210,190,235,90,80,95,242.5,240,245,87.5,80,95,High,High,Low,High,High,Low
+Female,76,Ureter,Ureter,pTa,No,No,Grade 1,High Grade,No,No,No,No,60,No,60,NED,No,60,300,300,300,100,100,100,230,190,240,100,80,100,High,High,High,High,High,High
+Male,67,Ureter,Ureter,pTa,No,No,Grade 2,High Grade,No,No,No,No,36,No,30,NED,No,36,260,220,270,95,90,95,270,260,295,100,100,100,High,High,Low,High,High,Low
+Male,76,Ureter,Ureter,pTa,No,No,Grade 3,High Grade,NA,No,NA,No,31,No,25,NED,No,31,285,285,285,95,95,95,172.5,170,175,97.5,95,100,High,High,High,High,High,Low
