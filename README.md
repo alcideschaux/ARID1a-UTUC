@@ -2,10 +2,10 @@
 
 ## Description
 This study evaluates the immunohistochemical expression of ARID1a in 99 cases of upper tract urothelial carcinomas (UTUC) using tissue microarrays (TMA). It also evaluates the role of ARID1a immunohistochemistry as a prognosticator of outcome in upper tract urothelial carcinomas. The following files are part of this repository: 
-* The [arid1a.utuc.csv](http:example.com) file corresponds to the full dataset of the 99 cases.
-* The [CodeBook.md](http:example.com) describes the variable lables, providing information on type and levels.
-* The [arid1a.utuc.R](http:example.com) file contains the R code used for the analysis.
-* The [Arid1aUtccResults.md](htttp://example.com) file contains the results of the analysis.
+* The [arid1a.utuc.csv](https://github.com/alcideschaux/arid1a.utuc/blob/master/arid1a.utuc.csv) file corresponds to the full dataset of the 99 cases.
+* The [CodeBook.md](https://github.com/alcideschaux/arid1a.utuc/blob/master/CodeBook.md) describes the variable lables, providing information on type and levels.
+* The [arid1a.utuc.R](https://github.com/alcideschaux/arid1a.utuc/blob/master/arid1a.utuc.R) file contains the R code used for the analysis.
+* The [Arid1aUtccResults.md](https://github.com/alcideschaux/arid1a.utuc/blob/master/arid1a.utuc.R) file contains the results of the analysis.
 
 ## Methodology
 ### Patient Cohort and TMA Construction
