@@ -2,13 +2,9 @@
 
 # Loading the libraries required for the analysis
 library(survival)
-library(tcltk)
-
-# Setting the working directory
-setwd(dir = "tk_choose.dir()")
 
 # Opening the dataset
-arid1a.full <- read.csv(file = "arid1a.utuc.csv")
+arid1a.full <- read.csv(file = "../arid1a.utuc.csv")
 
 # Loading the functions for standard.analysis
 source(file = "standard.analysis.R")

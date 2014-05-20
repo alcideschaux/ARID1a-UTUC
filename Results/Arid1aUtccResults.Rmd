@@ -1,0 +1,492 @@
+# ARID1a Expression in Upper Tract Urothelial Carcinoma
+Last update: ```r {date()}```
+
+```{r global_options}
+opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+* Loading the libraries and functions required for the analysis
+```{r echo = TRUE}
+library(survival)
+source(file = "../standard.analysis.R")
+```
+* Opening the dataset, selecting variables relevant to the analysis, and dropping unused levels
+```{r echo = TRUE}
+arid1a.full <- read.csv(file = "../arid1a.utuc.csv")
+arid1a.data<- arid1a.full[c("sex", "age", "location", "location2", "pT",
+                      "pT.2", "pT.a", "WHO.grade", "lymph.nodes", "lvi",
+                      "metastasis", "bladder.recur", "fu.recur",
+                      "tumor.prog", "fu.prog", "outcome", "dod",
+                      "fu.outcome", "tumor.h.med", "tumor.pos.med",
+                      "normal.h.med", "normal.pos.med", "tumor.h.0",
+                      "tumor.h.p50", "tumor.h.q3", "tumor.pos.0",
+                      "tumor.pos.p50", "tumor.pos.q3")]
+arid1a.data <- droplevels(arid1a.data)
+```
+***
+## 1) Clinicopathologic Features and Outcome
+* Patient's age
+```{r}
+descriptive(arid1a.data$age)
+```
+* Patient's sex
+```{r}
+table.prop(arid1a.data$sex)
+```
+* Tumor location
+```{r}
+table.prop(arid1a.data$location)
+```
+* pT stage
+```{r}
+table.prop(arid1a.data$pT)
+```
+* WHO histologic grade
+```{r}
+table.prop(arid1a.data$WHO.grade)
+```
+* Lymphovascular invasion
+```{r}
+table.prop(arid1a.data$lvi)
+```
+* Lymph node metastasis
+```{r}
+table.prop(arid1a.data$lymph.nodes)
+```
+* Distant metastasis
+```{r}
+table.prop(arid1a.data$metastasis)
+```
+* Bladder recurrence
+```{r}
+table.prop(arid1a.data$bladder.recur)
+```
+* tumor progression
+```{r}
+table.prop(arid1a.data$tumor.prog)
+```
+* Patient's outcome
+```{r}
+table.prop(arid1a.data$outcome)
+```
+***
+
+## 2) Association of Clinicopathologic Features and ARID1a Expression with Tumor Progression
+* Cases with tumor progression
+```{r}
+table(arid1a.data$tumor.prog)
+```
+* Patient's age
+```{r}
+compare.mw(arid1a.data$age, arid1a.data$tumor.prog)
+```
+* Patient's sex
+```{r}
+compare.fisher(arid1a.data$sex, arid1a.data$tumor.prog)
+```
+* Tumor location
+```{r}
+compare.fisher(arid1a.data$location, arid1a.data$tumor.prog)
+```
+* pT stage
+```{r}
+compare.fisher(arid1a.data$pT, arid1a.data$tumor.prog)
+```
+* WHO histologic grade
+```{r}
+compare.fisher(arid1a.data$WHO.grade, arid1a.data$tumor.prog)
+```
+* Lymph node metastasis
+```{r}
+compare.fisher(arid1a.data$lymph.nodes, arid1a.data$tumor.prog)
+```
+* Lymmphovascular invasion
+```{r}
+compare.fisher(arid1a.data$lvi, arid1a.data$tumor.prog)
+```
+* Tumor median H-score
+```{r}
+compare.mw(arid1a.data$tumor.h.med, arid1a.data$tumor.prog)
+```
+* Tumor median % positive cells
+```{r}
+compare.mw(arid1a.data$tumor.pos.med, arid1a.data$tumor.prog)
+```
+***
+
+## 3) Association of Clinicopathologic Features and ARID1a Expression with Cancer-Related mortality
+* Cases with cancer-related mortality
+```{r}
+table(arid1a.data$dod)
+```
+* Patient's age
+```{r}
+compare.mw(arid1a.data$age, arid1a.data$dod)
+```
+* Patient's sex
+```{r}
+compare.fisher(arid1a.data$sex, arid1a.data$dod)
+```
+* Tumor location
+```{r}
+compare.fisher(arid1a.data$location, arid1a.data$dod)
+```
+* pT stage
+```{r}
+compare.fisher(arid1a.data$pT, arid1a.data$dod)
+```
+* WHO histologic grade
+```{r}
+compare.fisher(arid1a.data$WHO.grade, arid1a.data$dod)
+```
+* Lymph node metastasis
+```{r}
+compare.fisher(arid1a.data$lymph.nodes, arid1a.data$dod)
+```
+* Lymphovascular invasion
+```{r}
+compare.fisher(arid1a.data$lvi, arid1a.data$dod)
+```
+* Tumor median H-score
+```{r}
+compare.mw(arid1a.data$tumor.h.med, arid1a.data$dod)
+```
+* Tumor median % positive cells
+```{r}
+compare.mw(arid1a.data$tumor.pos.med, arid1a.data$dod)
+```
+***
+
+## 4) Odds Ratios for Tumor Progression
+### 4.1) Clinicopathologic features
+* Patient's age
+```{r}
+logistic(tumor.prog ~ age, data = arid1a.data)
+```
+* Patient's sex
+```{r}
+logistic(tumor.prog ~ sex, data = arid1a.data)
+```
+* Tumor location (Pelvis vs. ureter, tumors in pelvis-ureter excluded)
+```{r}
+logistic(tumor.prog ~ location2, data = arid1a.data)
+```
+* High pT stage (>pT2)
+```{r}
+logistic(tumor.prog ~ pT.2, data = arid1a.data)
+```
+* WHO histologic grade
+```{r}
+logistic(tumor.prog ~ WHO.grade, data = arid1a.data)
+```
+* Metastatic lymph nodes
+```{r}
+logistic(tumor.prog ~ lymph.nodes, data = arid1a.data)
+```
+* Lymphovascular invasion
+```{r}
+logistic(tumor.prog ~ lvi, data = arid1a.data)
+```
+### 4.2) ARID1a Expression, Unadjusted
+* H-score = 0 vs. H-score > 0
+```{r}
+logistic(tumor.prog ~ tumor.h.0, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r}
+logistic(tumor.prog ~ tumor.h.p50, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile 
+```{r}
+logistic(tumor.prog ~ tumor.h.q3, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r}
+logistic(tumor.prog ~ tumor.pos.0, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r}
+logistic(tumor.prog ~ tumor.pos.p50, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r}
+logistic(tumor.prog ~ tumor.pos.q3, data = arid1a.data)
+```
+### 4.3) ARID1a, Adjusted by Clinicopathologic Features
+* H-score = 0 vs. H-score > 0
+```{r}
+logistic(tumor.prog ~ tumor.h.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r}
+logistic(tumor.prog ~ tumor.h.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile 
+```{r}
+logistic(tumor.prog ~ tumor.h.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r}
+logistic(tumor.prog ~ tumor.pos.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r}
+logistic(tumor.prog ~ tumor.pos.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r}
+logistic(tumor.prog ~ tumor.pos.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+***
+
+## 5) Odds Ratios for Cancer-Specific Mortality
+### 5.1) Clinicopathologic features
+* Patient's age
+```{r}
+logistic(dod ~ age, data = arid1a.data)
+```
+* Patient's sex
+```{r}
+logistic(dod ~ sex, data = arid1a.data)
+```
+* Tumor location (Pelvis vs. ureter, tumors in pelvis-ureter excluded)
+```{r}
+logistic(dod ~ location2, data = arid1a.data)
+```
+* High pT stage (>pT2)
+```{r}
+logistic(dod ~ pT.2, data = arid1a.data)
+```
+* WHO histologic grade
+```{r}
+logistic(dod ~ WHO.grade, data = arid1a.data)
+```
+* Metastatic lymph nodes
+```{r}
+logistic(dod ~ lymph.nodes, data = arid1a.data)
+```
+* Lymphovascular invasion
+```{r}
+logistic(dod ~ lvi, data = arid1a.data)
+```
+### 5.2) ARID1a Expression, Unadjusted
+* H-score = 0 vs. H-score > 0
+```{r}
+logistic(dod ~ tumor.h.0, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r}
+logistic(dod ~ tumor.h.p50, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile 
+```{r}
+logistic(dod ~ tumor.h.q3, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r}
+logistic(dod ~ tumor.pos.0, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r}
+logistic(dod ~ tumor.pos.p50, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r}
+logistic(dod ~ tumor.pos.q3, data = arid1a.data)
+```
+### 5.3) ARID1a, Adjusted by Clinicopathologic Features
+* H-score = 0 vs. H-score > 0
+```{r}
+logistic(dod ~ tumor.h.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r}
+logistic(dod ~ tumor.h.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile 
+```{r}
+logistic(dod ~ tumor.h.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r}
+logistic(dod ~ tumor.pos.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r}
+logistic(dod ~ tumor.pos.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r}
+logistic(dod ~ tumor.pos.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+***
+
+## 6) Hazard Ratios for Tumor Progression
+```{r}
+progression.surv <- with(Surv(fu.prog, as.numeric(tumor.prog)), data = arid1a.data)
+```
+### 6.1) Clinicopathologic features
+* Patient's age
+```{r}
+hazard(progression.surv ~ age, data = arid1a.data)
+```
+* Patient's sex
+```{r}
+hazard(progression.surv ~ sex, data = arid1a.data)
+```
+* Tumor location (Pelvis vs. ureter, tumors in pelvis-ureter excluded)
+```{r}
+hazard(progression.surv ~ location2, data = arid1a.data)
+```
+* High pT stage (>pT2)
+```{r}
+hazard(progression.surv ~ pT.2, data = arid1a.data)
+```
+* WHO histologic grade
+```{r}
+hazard(progression.surv ~ WHO.grade, data = arid1a.data)
+```
+* Metastatic lymph nodes
+```{r}
+hazard(progression.surv ~ lymph.nodes, data = arid1a.data)
+```
+* Lymphovascular invasion
+```{r}
+hazard(progression.surv ~ lvi, data = arid1a.data)
+```
+### 6.2) ARID1a Unadjusted
+* H-score = 0 vs. H-score > 0
+```{r}
+hazard(progression.surv ~ tumor.h.0, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r}
+hazard(progression.surv ~ tumor.h.p50, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile
+```{r}
+hazard(progression.surv ~ tumor.h.q3, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r}
+hazard(progression.surv ~ tumor.pos.0, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r}
+hazard(progression.surv ~ tumor.pos.p50, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r}
+hazard(progression.surv ~ tumor.pos.q3, data = arid1a.data)
+```
+### 6.3) ARID1a, Adjusted by Clinicopathologic Features
+* H-score = 0 vs. H-score > 0
+```{r}
+hazard(progression.surv ~ tumor.h.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r}
+hazard(progression.surv ~ tumor.h.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile
+```{r}
+hazard(progression.surv ~ tumor.h.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r}
+hazard(progression.surv ~ tumor.pos.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r}
+hazard(progression.surv ~ tumor.pos.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r}
+hazard(progression.surv ~ tumor.pos.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+***
+
+## 7) Hazard Ratios for Cancer-Specific Mortality
+```{r}
+dod.surv <- with(Surv(fu.outcome, as.numeric(dod)), data = arid1a.data)
+```
+### 7.1) Clinicopathologic features
+* Patient's age
+```{r}
+hazard(dod.surv ~ age, data = arid1a.data)
+```
+* Patient's sex
+```{r}
+hazard(dod.surv ~ sex, data = arid1a.data)
+```
+* Tumor location (Pelvis vs. ureter, tumors in pelvis-ureter excluded)
+```{r}
+hazard(dod.surv ~ location2, data = arid1a.data)
+```
+* High pT stage (>pT2)
+```{r}
+hazard(dod.surv ~ pT.2, data = arid1a.data)
+```
+* WHO histologic grade
+```{r}
+hazard(dod.surv ~ WHO.grade, data = arid1a.data)
+```
+* Metastatic lymph nodes
+```{r}
+hazard(dod.surv ~ lymph.nodes, data = arid1a.data)
+```
+* Lymphovascular invasion
+```{r}
+hazard(dod.surv ~ lvi, data = arid1a.data)
+```
+### 7.2) ARID1a Unadjusted
+* H-score = 0 vs. H-score > 0
+```{r}
+hazard(dod.surv ~ tumor.h.0, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r}
+hazard(dod.surv ~ tumor.h.p50, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile
+```{r}
+hazard(dod.surv ~ tumor.h.q3, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r}
+hazard(dod.surv ~ tumor.pos.0, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r}
+hazard(dod.surv ~ tumor.pos.p50, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r}
+hazard(dod.surv ~ tumor.pos.q3, data = arid1a.data)
+```
+### 7.3) ARID1a, Adjusted by Clinicopathologic Features
+* H-score = 0 vs. H-score > 0
+```{r}
+hazard(dod.surv ~ tumor.h.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r}
+hazard(dod.surv ~ tumor.h.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile
+```{r}
+hazard(dod.surv ~ tumor.h.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r}
+hazard(dod.surv ~ tumor.pos.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r}
+hazard(dod.surv ~ tumor.pos.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r}
+hazard(dod.surv ~ tumor.pos.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+***

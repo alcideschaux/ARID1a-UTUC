@@ -19,9 +19,7 @@ table.prop <- function(x){
         a <- table(x, useNA = "ifany")
         b <- 100*round(prop.table(a), digits = 3)
         c <- cbind(Count = a, Percentages = b)
-        d <- sum(a)
         print(c)
-        cat("\nTotal count =", d)
 }
 
 # Defining the function "compare.wilcox" which shows the median and IQR of
@@ -72,10 +70,10 @@ logistic <- function(x, data){
 hazard <- function(x, data){
         require(survival)
         model <- coxph(x, data = data)
-        a <- summary(model)$coefficients[2] # HR
-        b <- summary(model)$conf.int[3] # Lower 95% CI
-        c <- summary(model)$conf.int[4] # Upper 95% CI
-        d <- summary(model)$coefficients[5] # P values
+        a <- summary(model)$coefficients[, 2] # HR
+        b <- summary(model)$conf.int[, 3] # Lower 95% CI
+        c <- summary(model)$conf.int[, 4] # Upper 95% CI
+        d <- summary(model)$coefficients[, 5] # P values
         print(cbind("Hazard Ratio" = a, "Lower 95% CI" = b,
                     "Upper 95% CI" = c, "P value" = d))
 }
