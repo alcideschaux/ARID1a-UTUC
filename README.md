@@ -5,7 +5,7 @@ This study evaluates the immunohistochemical expression of ARID1a in 99 cases of
 * The [arid1a.utuc.csv](https://github.com/alcideschaux/arid1a.utuc/blob/master/arid1a.utuc.csv) file corresponds to the full dataset of the 99 cases.
 * The [CodeBook.md](https://github.com/alcideschaux/arid1a.utuc/blob/master/CodeBook.md) describes the variable lables, providing information on type and levels.
 * The [arid1a.utuc.R](https://github.com/alcideschaux/arid1a.utuc/blob/master/arid1a.utuc.R) file contains the R code used for the analysis.
-* The [Arid1aUtccResults.md](https://github.com/alcideschaux/arid1a.utuc/blob/master/arid1a.utuc.R) file contains the results of the analysis.
+* The [Arid1aUtccResults.md](https://github.com/alcideschaux/arid1a.utuc/blob/master/Results/Arid1aUtccResults.md) file contains the results of the analysis.
 
 ## Methodology
 ### Patient Cohort and TMA Construction
