@@ -1,0 +1,671 @@
+## Data Analysis - Report
+Last update: ```r {date()}```
+
+### Preanalysis of Data
+* Setting the global options and loading the libraries and functions required for the analysis
+```{r global_options}
+library(knitr)
+opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.height = 7, fig.width = 9)
+library(survival)
+source(file = "StandardAnalysis2.R")
+source(file = "SurvivalPlot.R")
+options(scipen = 999)
+```
+
+* Opening the dataset, selecting variables relevant to the analysis, and dropping unused levels
+```{r echo = TRUE}
+arid1a.full <- read.csv(file = "arid1a.utuc.csv")
+arid1a.data<- arid1a.full[c("sex", "age", "location", "location2", "pT", "pT.2", "pT.a", "WHO.grade", "lymph.nodes", "lvi", "metastasis", "bladder.recur", "fu.recur", "tumor.prog", "fu.prog", "outcome", "dod", "fu.outcome", "tumor.h.med", "tumor.pos.med", "normal.h.med", "normal.pos.med", "tumor.h.0", "tumor.h.p50", "tumor.h.q3", "tumor.pos.0", "tumor.pos.p50", "tumor.pos.q3")]
+arid1a.data <- droplevels(arid1a.data)
+attach(arid1a.data)
+```
+***
+
+### ARID1a in Normal and Tumor Tissues
+In this section we compare ARID1a levels (H-scores and percentages) between normal (Var #1) and tumor (Var #2) tissues using the Mann-Whitney U test and boxplots.
+
+* Comparing ARID1a H-scores
+```{r NormalTumorH}
+compare.mw2(normal.h.med, tumor.h.med)
+boxplot(normal.h.med, tumor.h.med, ylab = "ARID1a Median H-score", cex.lab = 1.5, cex.axis = 1.2, names = c("Normal Tissue", "Tumor Tissue"), col = topo.colors(2))
+```
+
+* Comparing ARID1a percentages
+```{r NormalTumorP}
+compare.mw2(normal.pos.med, tumor.pos.med)
+boxplot(normal.pos.med, tumor.pos.med, ylab = "ARID1a Median percentage", cex.lab = 1.5, cex.axis = 1.2, names = c("Normal Tissue", "Tumor Tissue"), col = topo.colors(2))
+```
+
+***
+
+### Description of Clinicopathologic Features and Outcome
+In this section we describe the clinicopathologic features and outcome of our patients.
+
+#### Clinical features
+* Patient's age
+```{r DescriptiveAge}
+descriptive(age)
+```
+* Patient's sex
+```{r DescriptiveSex}
+table.prop(sex)
+```
+
+#### Pathologic features
+* Tumor location
+```{r DescriptiveLocation}
+table.prop(location)
+```
+* pT stage
+```{r DescriptivePT}
+table.prop(pT)
+```
+* WHO histologic grade
+```{r DescriptiveGrade}
+table.prop(WHO.grade)
+```
+* Lymphovascular invasion
+```{r DescriptiveLVI}
+table.prop(lvi)
+```
+* Lymph node metastasis
+```{r DescriptiveLNmet}
+table.prop(lymph.nodes)
+```
+
+#### Outcome features
+* Distant metastasis
+```{r DescriptiveMets}
+table.prop(metastasis)
+```
+* Bladder recurrence
+```{r DescriptiveRecurrence}
+table.prop(bladder.recur)
+```
+* Tumor progression
+```{r DescriptiveProgression}
+table.prop(tumor.prog)
+```
+* Patient's outcome
+```{r DescriptiveOutcome}
+table.prop(outcome)
+```
+***
+
+### Association of Clinicopathologic Features and ARID1a Expression with Tumor Progression
+In this section we compare clinicopathologic features and ARID1a expression between patients with and without tumor progression, using the Mann-Whitney U test and the Fisher's exact test. From `r length(tumor.prog)` patients, `r sum(tumor.prog == "Yes")` patients showed tumor progression during follow-up. Adjusted P values using Hommel's correction are provided at the end of this section.
+
+#### Clinical features
+* Patient's age
+```{r AssociationProgressionAge}
+compare.mw(age, tumor.prog)
+```
+* Patient's sex
+```{r AssociationProgressionSex}
+compare.fisher(sex, tumor.prog)
+```
+
+#### Pathologic features
+* Tumor location
+```{r AssociationProgressionLocation}
+compare.fisher(location, tumor.prog)
+```
+* pT stage
+```{r AssociationProgressionPT}
+compare.fisher(pT, tumor.prog)
+```
+* WHO histologic grade
+```{r AssociationProgressionGrade}
+compare.fisher(WHO.grade, tumor.prog)
+```
+* Lymph node metastasis
+```{r AssociationProgressionLNmet}
+compare.fisher(lymph.nodes, tumor.prog)
+```
+* Lymmphovascular invasion
+```{r AssociationProgressionLVI}
+compare.fisher(lvi, tumor.prog)
+```
+
+#### ARID1a expression
+* Tumor median H-score
+```{r AssociationProgressionH}
+compare.mw(tumor.h.med, tumor.prog)
+```
+* Tumor median % positive cells
+```{r AssociationProgressionP}
+compare.mw(tumor.pos.med, tumor.prog)
+```
+
+#### Adjusted P values
+In this section we provide the adjusted P values for the preceding tests using Hommel's correction.
+```{r AssociationProgressionAdjusted}
+variables.list <- c("Patient's age", "Patient's sex", "Tumor location", "pT stage", "WHO histologic grade", "Lymph node metastasis", "lymphovascular invasion", "Tumor median H-score", "Tumor median % positive cells")
+pvalues.progression <- c(0.1467, 0.5262, 0.5787, 1.278e-07, 0.04221, 0.01085, 1.918e-06, 0.6049, 0.9046)
+pvalues.progression.adjusted <- p.adjust(pvalues.progression, method = c("hommel"))
+table.progression.adjusted <- cbind(pvalues.progression, pvalues.progression.adjusted)
+matrix(data = table.progression.adjusted, nrow = length(variables.list), ncol = 2, dimnames = list(c(variables.list), c("Raw P values", "Adjusted P values")))
+```
+***
+
+### Association of Clinicopathologic Features and ARID1a Expression with Cancer-Related Mortality
+In this section we compare clinicopathologic features and ARID1a expression between patients who died of cancer and who didn't, using the Mann-Whitney U test and the Fisher's exact test. From `r length(dod)` patients, `r sum(dod == "Yes")` patients died of cancer during follow-up. Adjusted P values using Hommel's correction are provided at the end of this section.
+
+#### Clinical features
+* Patient's age
+```{r AssociationMortalityAge}
+compare.mw(age, dod)
+```
+* Patient's sex
+```{r AssociationMortalitySex}
+compare.fisher(sex, dod)
+```
+
+#### Pathologic features
+* Tumor location
+```{r AssociationMortalityLocation}
+compare.fisher(location, dod)
+```
+* pT stage
+```{r AssociationMortalityPT}
+compare.fisher(pT, dod)
+```
+* WHO histologic grade
+```{r AssociationMortalityGrade}
+compare.fisher(WHO.grade, dod)
+```
+* Lymph node metastasis
+```{r AssociationMortalityLNmet}
+compare.fisher(lymph.nodes, dod)
+```
+* Lymphovascular invasion
+```{r AssociationMortalityLVI}
+compare.fisher(lvi, dod)
+```
+
+#### ARID1a expression
+* Tumor median H-score
+```{r AssociationMortalityH}
+compare.mw(tumor.h.med, dod)
+```
+* Tumor median % positive cells
+```{r AssociationMortalityP}
+compare.mw(tumor.pos.med, dod)
+```
+
+#### Adjusted P values
+In this section we provide the adjusted P values for the preceding tests using Hommel's correction.
+```{r AssociationMortalityAdjusted}
+pvalues.mortality <- c(0.4832, 0.5044, 0.9269, 0.0000001284, 0.03395, 0.04492, 0.00001606, 0.8966, 0.3724)
+pvalues.mortality.adjusted <- p.adjust(pvalues.mortality, method = c("hommel"))
+table.mortality.adjusted <- cbind(pvalues.mortality, pvalues.mortality.adjusted)
+matrix(data = table.mortality.adjusted, nrow = length(variables.list), ncol = 2, dimnames = list(c(variables.list), c("Raw P values", "Adjusted P values")))
+```
+***
+
+### Survival Plots for Tumor Progression and Cancer-Related Mortality
+In this section we plot survival curves for tumor progression and cancer-related mortality. We used 3 cutoff points each of H-scores and % positive cells for ARID1a low/high expression. For H-scores: 1) H-score = 0 vs. H-score > 0; 2) H-score < median vs. H-score > median; 3) H-score < upper tertile (Q3) vs. H-score < Q3. For % positive cells: 1) % = 0 vs. % > 0; 2) % < median vs. % > median; 3) % < Q3 vs. % < Q3. Survival curves were drawn using the Kaplan-Meier method and compared using the log-rank test.
+```{r SurvivalObjects}
+SurvivalProgression <- Surv(fu.prog, as.numeric(tumor.prog))
+SurvivalMortality <- Surv(fu.outcome, as.numeric(dod))
+```
+
+```{r KM1A}
+# Estimating P values using the log-rank test
+ProgressionH0.LR <- survdiff(SurvivalProgression ~ tumor.h.0)
+ProgressionH0.P <- pchisq(ProgressionH0.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalProgression ~ tumor.h.0), title = "Tumor Progression and ARID1a Expression", levels = c("High (H-score > 0)", "Low (H-score = 0)"))
+text(paste("P (log-rank test) = ", round(ProgressionH0.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+```{r KM1B}
+# Estimating P values using the log-rank test
+ProgressionHp50.LR <- survdiff(SurvivalProgression ~ tumor.h.p50)
+ProgressionHp50.P <- pchisq(ProgressionHp50.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalProgression ~ tumor.h.p50), title = "Tumor Progression and ARID1a Expression", levels = c("High (H-score > median)", "Low (H-score < median)"))
+text(paste("P (log-rank test) = ", round(ProgressionHp50.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+```{r KM1C}
+# Estimating P values using the log-rank test
+ProgressionHq3.LR <- survdiff(SurvivalProgression ~ tumor.h.q3)
+ProgressionHq3.P <- pchisq(ProgressionHq3.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalProgression ~ tumor.h.q3), title = "Tumor Progression and ARID1a Expression", levels = c("High (H-score > Q3)", "Low (H-score < Q3)"))
+text(paste("P (log-rank test) = ", round(ProgressionHq3.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+```{r KM1D}
+# Estimating P values using the log-rank test
+ProgressionP0.LR <- survdiff(SurvivalProgression ~ tumor.pos.0)
+ProgressionP0.P <- pchisq(ProgressionP0.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalProgression ~ tumor.pos.0), title = "Tumor Progression and ARID1a Expression", levels = c("High (% Positive cells > 0)", "Low (% Positive cells = 0)"))
+text(paste("P (log-rank test) = ", round(ProgressionP0.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+```{r KM1E}
+# Estimating P values using the log-rank test
+ProgressionPp50.LR <- survdiff(SurvivalProgression ~ tumor.pos.p50)
+ProgressionPp50.P <- pchisq(ProgressionPp50.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalProgression ~ tumor.pos.p50), title = "Tumor Progression and ARID1a Expression", levels = c("High (% Positive cells > median)", "Low (% Positive cells < median)"))
+text(paste("P (log-rank test) = ", round(ProgressionPp50.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+```{r KM1F}
+# Estimating P values using the log-rank test
+ProgressionPq3.LR <- survdiff(SurvivalProgression ~ tumor.pos.q3)
+ProgressionPq3.P <- pchisq(ProgressionPq3.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalProgression ~ tumor.pos.q3), title = "Tumor Progression and ARID1a Expression", levels = c("High (% Positive cells > Q3)", "Low (% Positive cells < Q3)"))
+text(paste("P (log-rank test) = ", round(ProgressionPq3.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+```{r KM2A}
+# Estimating P values using the log-rank test
+MortalityH0.LR <- survdiff(SurvivalMortality ~ tumor.h.0)
+MortalityH0.P <- pchisq(MortalityH0.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalMortality ~ tumor.h.0), title = "Cancer-Related Mortality and ARID1a Expression", levels = c("High (H-score > 0)", "Low (H-score = 0)"))
+text(paste("P (log-rank test) = ", round(MortalityH0.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+```{r KM2B}
+# Estimating P values using the log-rank test
+MortalityHp50.LR <- survdiff(SurvivalMortality ~ tumor.h.p50)
+MortalityHp50.P <- pchisq(MortalityHp50.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalMortality ~ tumor.h.p50), title = "Cancer-Related Mortality and ARID1a Expression", levels = c("High (H-score > median)", "Low (H-score < median)"))
+text(paste("P (log-rank test) = ", round(MortalityHp50.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+```{r KM2C}
+# Estimating P values using the log-rank test
+MortalityHq3.LR <- survdiff(SurvivalMortality ~ tumor.h.q3)
+MortalityHq3.P <- pchisq(MortalityHq3.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalMortality ~ tumor.h.q3), title = "Cancer-Related Mortality and ARID1a Expression", levels = c("High (H-score > Q3)", "Low (H-score < Q3)"))
+text(paste("P (log-rank test) = ", round(MortalityHq3.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+```{r KM2D}
+# Estimating P values using the log-rank test
+MortalityP0.LR <- survdiff(SurvivalMortality ~ tumor.pos.0)
+MortalityP0.P <- pchisq(MortalityP0.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalMortality ~ tumor.pos.0), title = "Cancer-Related Mortality and ARID1a Expression", levels = c("High (% Positive cells > 0)", "Low (% Positive cells = 0)"))
+text(paste("P (log-rank test) = ", round(MortalityP0.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+```{r KM2E}
+# Estimating P values using the log-rank test
+MortalityPp50.LR <- survdiff(SurvivalMortality ~ tumor.pos.p50)
+MortalityPp50.P <- pchisq(MortalityPp50.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalMortality ~ tumor.pos.p50), title = "Cancer-Related Mortality and ARID1a Expression", levels = c("High (% Positive cells > median)", "Low (% Positive cells < median)"))
+text(paste("P (log-rank test) = ", round(MortalityPp50.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+```{r KM2F}
+# Estimating P values using the log-rank test
+MortalityPq3.LR <- survdiff(SurvivalMortality ~ tumor.pos.q3)
+MortalityPq3.P <- pchisq(MortalityPq3.LR$chisq, df = 1, lower = FALSE)
+# Plotting curves
+survival.plot(x = survfit(SurvivalMortality ~ tumor.pos.q3), title = "Cancer-Related Mortality and ARID1a Expression", levels = c("High (% Positive cells > Q3)", "Low (% Positive cells < Q3)"))
+text(paste("P (log-rank test) = ", round(MortalityPq3.P, digits = 3)), x = 35, y = 0.01, cex = 1.25)
+```
+
+### Odds Ratios for Tumor Progression
+#### Clinical features
+* Patient's age
+```{r ORProgressionAge}
+logistic2(tumor.prog ~ age, data = arid1a.data)
+```
+* Patient's sex
+```{r ORProgressionSex}
+logistic2(tumor.prog ~ sex, data = arid1a.data)
+```
+
+#### Pathologic features
+* Tumor location (Pelvis vs. ureter, tumors in pelvis-ureter excluded)
+```{r ORProgressionLocation}
+logistic2(tumor.prog ~ location2, data = arid1a.data)
+```
+* High pT stage (>pT2)
+```{r ORProgressionPT}
+logistic2(tumor.prog ~ pT.2, data = arid1a.data)
+```
+* WHO histologic grade
+```{r ORProgressionGrade}
+logistic2(tumor.prog ~ WHO.grade, data = arid1a.data)
+```
+* Metastatic lymph nodes
+```{r ORProgressionLNmet}
+logistic2(tumor.prog ~ lymph.nodes, data = arid1a.data)
+```
+* Lymphovascular invasion
+```{r ORProgressionLVI}
+logistic2(tumor.prog ~ lvi, data = arid1a.data)
+```
+
+#### ARID1a Expression, Unadjusted
+* H-score = 0 vs. H-score > 0
+```{r ORProgressionH0}
+logistic2(tumor.prog ~ tumor.h.0, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r ORProgressionHp50}
+logistic2(tumor.prog ~ tumor.h.p50, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile 
+```{r ORProgressionHq3}
+logistic2(tumor.prog ~ tumor.h.q3, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r ORProgressionP0}
+logistic2(tumor.prog ~ tumor.pos.0, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r ORProgressionPp50}
+logistic2(tumor.prog ~ tumor.pos.p50, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r ORProgressionPq3}
+logistic2(tumor.prog ~ tumor.pos.q3, data = arid1a.data)
+```
+
+#### ARID1a, Adjusted by Clinicopathologic Features
+Clinicopathologic features included age, sex, tumor location, WHO grade, lymph node metastastis and lymphovascular invasion.
+
+* H-score = 0 vs. H-score > 0
+```{r ORAdjustedProgressionH0}
+logistic2(tumor.prog ~ tumor.h.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r ORAdjustedProgressionHp50}
+logistic2(tumor.prog ~ tumor.h.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile 
+```{r ORAdjustedProgressionHq3}
+logistic2(tumor.prog ~ tumor.h.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r ORAdjustedProgressionP0}
+logistic2(tumor.prog ~ tumor.pos.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r ORAdjustedProgressionPp50}
+logistic2(tumor.prog ~ tumor.pos.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r ORAdjustedProgressionPq3}
+logistic2(tumor.prog ~ tumor.pos.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+***
+
+### Odds Ratios for Cancer-Specific Mortality
+#### Clinical features
+* Patient's age
+```{r ORMortalityAge}
+logistic2(dod ~ age, data = arid1a.data)
+```
+* Patient's sex
+```{r ORMortalitySex}
+logistic2(dod ~ sex, data = arid1a.data)
+```
+
+#### Pathologic features
+* Tumor location (Pelvis vs. ureter, tumors in pelvis-ureter excluded)
+```{r ORMortalityLocation}
+logistic2(dod ~ location2, data = arid1a.data)
+```
+* High pT stage (>pT2)
+```{r ORMortalityPT}
+logistic2(dod ~ pT.2, data = arid1a.data)
+```
+* WHO histologic grade
+```{r ORMortalityGrade}
+logistic2(dod ~ WHO.grade, data = arid1a.data)
+```
+* Metastatic lymph nodes
+```{r ORMortalityLNmet}
+logistic2(dod ~ lymph.nodes, data = arid1a.data)
+```
+* Lymphovascular invasion
+```{r ORMortalityLVI}
+logistic2(dod ~ lvi, data = arid1a.data)
+```
+
+#### ARID1a Expression, Unadjusted
+* H-score = 0 vs. H-score > 0
+```{r ORMortalityH0}
+logistic2(dod ~ tumor.h.0, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r ORMortalityHp50}
+logistic2(dod ~ tumor.h.p50, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile 
+```{r ORMortalityHq3}
+logistic2(dod ~ tumor.h.q3, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r ORMortalityP0}
+logistic2(dod ~ tumor.pos.0, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r ORMortalityPp50}
+logistic2(dod ~ tumor.pos.p50, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r ORMortalityPq3}
+logistic2(dod ~ tumor.pos.q3, data = arid1a.data)
+```
+
+#### ARID1a, Adjusted by Clinicopathologic Features
+Clinicopathologic features included age, sex, tumor location, WHO grade, lymph node metastastis and lymphovascular invasion.
+
+* H-score = 0 vs. H-score > 0
+```{r ORAdjustedMortalityH0}
+logistic2(dod ~ tumor.h.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r ORAdjustedMortalityHp50}
+logistic2(dod ~ tumor.h.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile 
+```{r ORAdjustedMortalityHq3}
+logistic2(dod ~ tumor.h.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r ORAdjustedMortalityP0}
+logistic2(dod ~ tumor.pos.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r ORAdjustedMortalityPp50}
+logistic2(dod ~ tumor.pos.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r ORAdjustedMortalityPq3}
+logistic2(dod ~ tumor.pos.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+***
+
+### Hazard Ratios for Tumor Progression
+#### Clinical features
+* Patient's age
+```{r HRProgressionAge}
+hazard2(SurvivalProgression ~ age, data = arid1a.data)
+```
+* Patient's sex
+```{r HRProgressionSex}
+hazard2(SurvivalProgression ~ sex, data = arid1a.data)
+```
+
+#### Pathologic features
+* Tumor location (Pelvis vs. ureter, tumors in pelvis-ureter excluded)
+```{r HRProgressionLocation}
+hazard2(SurvivalProgression ~ location2, data = arid1a.data)
+```
+* High pT stage (>pT2)
+```{r HRProgressionPT}
+hazard2(SurvivalProgression ~ pT.2, data = arid1a.data)
+```
+* WHO histologic grade
+```{r HRProgressionGrade}
+hazard2(SurvivalProgression ~ WHO.grade, data = arid1a.data)
+```
+* Metastatic lymph nodes
+```{r HRProgressionLNmet}
+hazard2(SurvivalProgression ~ lymph.nodes, data = arid1a.data)
+```
+* Lymphovascular invasion
+```{r HRProgressionLVI}
+hazard2(SurvivalProgression ~ lvi, data = arid1a.data)
+```
+
+#### ARID1a Unadjusted
+* H-score = 0 vs. H-score > 0
+```{r HRProgressionH0}
+hazard2(SurvivalProgression ~ tumor.h.0, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r HRProgressionHp50}
+hazard2(SurvivalProgression ~ tumor.h.p50, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile
+```{r HRProgressionHq3}
+hazard2(SurvivalProgression ~ tumor.h.q3, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r HRProgressionP0}
+hazard2(SurvivalProgression ~ tumor.pos.0, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r HRProgressionPp50}
+hazard2(SurvivalProgression ~ tumor.pos.p50, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r HRProgressionPq3}
+hazard2(SurvivalProgression ~ tumor.pos.q3, data = arid1a.data)
+```
+
+#### ARID1a, Adjusted by Clinicopathologic Features
+Clinicopathologic features included age, sex, tumor location, WHO grade, lymph node metastastis and lymphovascular invasion.
+
+* H-score = 0 vs. H-score > 0
+```{r HRaAdjustedProgressionH0}
+hazard2(SurvivalProgression ~ tumor.h.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r HRaAdjustedProgressionHp50}
+hazard2(SurvivalProgression ~ tumor.h.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile
+```{r HRaAdjustedProgressionHq3}
+hazard2(SurvivalProgression ~ tumor.h.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r HRaAdjustedProgressionP0}
+hazard2(SurvivalProgression ~ tumor.pos.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r HRaAdjustedProgressionPp50}
+hazard2(SurvivalProgression ~ tumor.pos.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r HRaAdjustedProgressionPq3}
+hazard2(SurvivalProgression ~ tumor.pos.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+***
+
+### Hazard Ratios for Cancer-Specific Mortality
+#### Clinical features
+* Patient's age
+```{r HRMortalityAge}
+hazard2(SurvivalMortality ~ age, data = arid1a.data)
+```
+* Patient's sex
+```{r HRMortalitySex}
+hazard2(SurvivalMortality ~ sex, data = arid1a.data)
+```
+
+#### Pathologic features
+* Tumor location (Pelvis vs. ureter, tumors in pelvis-ureter excluded)
+```{r HRMortalityLocation}
+hazard2(SurvivalMortality ~ location2, data = arid1a.data)
+```
+* High pT stage (>pT2)
+```{r HRMortalityPT}
+hazard2(SurvivalMortality ~ pT.2, data = arid1a.data)
+```
+* WHO histologic grade
+```{r HRMortalityGrade}
+hazard2(SurvivalMortality ~ WHO.grade, data = arid1a.data)
+```
+* Metastatic lymph nodes
+```{r HRMortalityLNmet}
+hazard2(SurvivalMortality ~ lymph.nodes, data = arid1a.data)
+```
+* Lymphovascular invasion
+```{r HRMortalityLVI}
+hazard2(SurvivalMortality ~ lvi, data = arid1a.data)
+```
+
+#### ARID1a Unadjusted
+* H-score = 0 vs. H-score > 0
+```{r HRMortalityH0}
+hazard2(SurvivalMortality ~ tumor.h.0, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r HRMortalityHp50}
+hazard2(SurvivalMortality ~ tumor.h.p50, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile
+```{r HRMortalityHq3}
+hazard2(SurvivalMortality ~ tumor.h.q3, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r HRMortalityP0}
+hazard2(SurvivalMortality ~ tumor.pos.0, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r HRMortalityPp50}
+hazard2(SurvivalMortality ~ tumor.pos.p50, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r HRMortalityPq3}
+hazard2(SurvivalMortality ~ tumor.pos.q3, data = arid1a.data)
+```
+
+#### ARID1a, Adjusted by Clinicopathologic Features
+Clinicopathologic features included age, sex, tumor location, WHO grade, lymph node metastastis and lymphovascular invasion.
+
+* H-score = 0 vs. H-score > 0
+```{r HRAdjustedMortalityH0}
+hazard2(SurvivalMortality ~ tumor.h.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < median vs. H-score > median
+```{r HRAdjustedMortalityHp50}
+hazard2(SurvivalMortality ~ tumor.h.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* H-score < upper quartile vs. H-score > upper quartile
+```{r HRAdjustedMortalityHq3}
+hazard2(SurvivalMortality ~ tumor.h.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells = 0 vs. % positive cells > 0
+```{r HRAdjustedMortalityP0}
+hazard2(SurvivalMortality ~ tumor.pos.0 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < median vs. % positive cells > median
+```{r HRAdjustedMortalityPp50}
+hazard2(SurvivalMortality ~ tumor.pos.p50 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+* % positive cells < upper quartile vs. % positive cells > upper quartile
+```{r HRAdjustedMortalityPq3}
+hazard2(SurvivalMortality ~ tumor.pos.q3 + age + sex + location2 + WHO.grade + lymph.nodes + lvi, data = arid1a.data)
+```
+***
