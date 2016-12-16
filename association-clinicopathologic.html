@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>ARID1a by clinicopathologic features</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">ARID in UTUC</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Descriptive analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="cohort.html">Cohort features</a>
+    </li>
+    <li>
+      <a href="arid1a-expression.html">ARID1a expression</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Association analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="association-tissue.html">ARID1a by tissue type</a>
+    </li>
+    <li>
+      <a href="association-clinicopathologic.html">ARID1a by clinicopathologic features</a>
+    </li>
+    <li>
+      <a href="association-outcome.html">ARID1a by outcome features</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Outcome analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="outcome-regression.html">Regression models</a>
+    </li>
+    <li>
+      <a href="outcome-survival.html">Survival curves</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/alcideschaux/ARID1a-UTUC">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">ARID1a by clinicopathologic features</h1>
+
+</div>
+
+
+<div id="arid1a-h-scores" class="section level2">
+<h2><strong>ARID1a H-scores</strong></h2>
+<div id="patients-age-group" class="section level3">
+<h3>Patient’s age group</h3>
+<p>Categorized by median age</p>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Younger age</th>
+<th align="center">Older age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">149.1</td>
+<td align="center">176.3</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">106.8</td>
+<td align="center">108.9</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">140.0</td>
+<td align="center">185.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">200.0</td>
+<td align="center">200.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">290.0</td>
+<td align="center">300.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">658</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">1.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/Age.Group.h-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/Age.Group.h-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-sex" class="section level3">
+<h3>Patient’s sex</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Female</th>
+<th align="center">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">148.4</td>
+<td align="center">173.2</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">109.5</td>
+<td align="center">106.9</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">130.0</td>
+<td align="center">182.5</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">213.8</td>
+<td align="center">195.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">300.0</td>
+<td align="center">292.5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">714</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">4.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/Sex.h-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/Sex.h-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="tumor-location" class="section level3">
+<h3>Tumor location</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Pelvis</th>
+<th align="center">Pelvis-Ureter</th>
+<th align="center">Ureter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">139.6</td>
+<td align="center">228.1</td>
+<td align="center">175.4</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">104.6</td>
+<td align="center">112.5</td>
+<td align="center">108.4</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">130.0</td>
+<td align="center">280.0</td>
+<td align="center">185.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">195.0</td>
+<td align="center">73.1</td>
+<td align="center">197.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">60.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">290.0</td>
+<td align="center">292.5</td>
+<td align="center">300.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">4.704</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.095</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/Location.h-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/Location.h-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="pt-stage" class="section level3">
+<h3>pT stage</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">pTa</th>
+<th align="center">pT1</th>
+<th align="center">pT2</th>
+<th align="center">pT3</th>
+<th align="center">pT4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">169.3</td>
+<td align="center">131.1</td>
+<td align="center">189.7</td>
+<td align="center">174.1</td>
+<td align="center">79.4</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">102.9</td>
+<td align="center">114.3</td>
+<td align="center">93.3</td>
+<td align="center">106.6</td>
+<td align="center">140.7</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">182.5</td>
+<td align="center">110.0</td>
+<td align="center">210.0</td>
+<td align="center">177.5</td>
+<td align="center">13.8</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">180.0</td>
+<td align="center">219.4</td>
+<td align="center">148.8</td>
+<td align="center">187.5</td>
+<td align="center">85.6</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">60.0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">300.0</td>
+<td align="center">292.5</td>
+<td align="center">292.5</td>
+<td align="center">292.5</td>
+<td align="center">290.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">3.521</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.47</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/pT.h-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/pT.h-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="histologic-grade" class="section level3">
+<h3>Histologic grade</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Grade 1</th>
+<th align="center">Grade 2</th>
+<th align="center">Grade 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">250.5</td>
+<td align="center">164.0</td>
+<td align="center">150.9</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">74.2</td>
+<td align="center">104.8</td>
+<td align="center">110.7</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">270.0</td>
+<td align="center">173.8</td>
+<td align="center">130.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">22.5</td>
+<td align="center">203.8</td>
+<td align="center">208.8</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">120.0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">300.0</td>
+<td align="center">292.5</td>
+<td align="center">290.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">4.648</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.098</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/Grade.h-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/Grade.h-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="who-histologic-grade" class="section level3">
+<h3>WHO histologic grade</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Low Grade</th>
+<th align="center">High Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">99.4</td>
+<td align="center">174.6</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">101.0</td>
+<td align="center">105.8</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">60.0</td>
+<td align="center">182.5</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">135.0</td>
+<td align="center">197.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">290.0</td>
+<td align="center">300.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">270</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">3.1e-02</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/WHO.grade.h-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/WHO.grade.h-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="lymphovascular-invasion" class="section level3">
+<h3>Lymphovascular invasion</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Lymphovascular invasion</th>
+<th align="center">No lymphovascular invasion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">176.6</td>
+<td align="center">152.9</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">119.3</td>
+<td align="center">100.0</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">252.5</td>
+<td align="center">145.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">226.2</td>
+<td align="center">178.8</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">292.5</td>
+<td align="center">300.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">892</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">2.2e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/LVI.h-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/LVI.h-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="lymph-node-metastasis" class="section level3">
+<h3>Lymph node metastasis</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Lymph node metastasis</th>
+<th align="center">No lymph node metastasis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">210.2</td>
+<td align="center">152.4</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">113.9</td>
+<td align="center">106.2</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">260.0</td>
+<td align="center">140.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">120.0</td>
+<td align="center">210.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">292.5</td>
+<td align="center">300.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">479</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">1.1e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/LN.Metastasis.h-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/LN.Metastasis.h-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="arid1a-percentages" class="section level2">
+<h2><strong>ARID1a percentages</strong></h2>
+<div id="patients-age-group-1" class="section level3">
+<h3>Patient’s age group</h3>
+<p>Categorized by median age</p>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Younger age</th>
+<th align="center">Older age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">65.7</td>
+<td align="center">70.4</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">35.5</td>
+<td align="center">32.5</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">85.0</td>
+<td align="center">90.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">45.0</td>
+<td align="center">45.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">742</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">5.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/Age.Group.pos-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/Age.Group.pos-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="patients-sex-1" class="section level3">
+<h3>Patient’s sex</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Female</th>
+<th align="center">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">63.4</td>
+<td align="center">71.6</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">35.9</td>
+<td align="center">32.3</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">80.0</td>
+<td align="center">90.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">46.2</td>
+<td align="center">45.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">677</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">2.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/Sex.pos-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/Sex.pos-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="tumor-location-1" class="section level3">
+<h3>Tumor location</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Pelvis</th>
+<th align="center">Pelvis-Ureter</th>
+<th align="center">Ureter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">63.3</td>
+<td align="center">86.9</td>
+<td align="center">70.2</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">35.3</td>
+<td align="center">18.4</td>
+<td align="center">33.7</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">75.0</td>
+<td align="center">93.8</td>
+<td align="center">90.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">40.0</td>
+<td align="center">15.6</td>
+<td align="center">50.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">60.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">100.0</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">3.125</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.21</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/Location.pos-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/Location.pos-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="pt-stage-1" class="section level3">
+<h3>pT stage</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">pTa</th>
+<th align="center">pT1</th>
+<th align="center">pT2</th>
+<th align="center">pT3</th>
+<th align="center">pT4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">74.1</td>
+<td align="center">58.9</td>
+<td align="center">79.1</td>
+<td align="center">70.3</td>
+<td align="center">30.0</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">29.9</td>
+<td align="center">38.3</td>
+<td align="center">20.1</td>
+<td align="center">33.1</td>
+<td align="center">47.1</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">90.0</td>
+<td align="center">75.0</td>
+<td align="center">85.0</td>
+<td align="center">90.0</td>
+<td align="center">10.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">35.0</td>
+<td align="center">65.6</td>
+<td align="center">31.9</td>
+<td align="center">45.0</td>
+<td align="center">32.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">45.0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">97.5</td>
+<td align="center">100.0</td>
+<td align="center">100.0</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">3.342</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.5</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/pT.pos-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/pT.pos-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="histologic-grade-1" class="section level3">
+<h3>Histologic grade</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Grade 1</th>
+<th align="center">Grade 2</th>
+<th align="center">Grade 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">93.0</td>
+<td align="center">67.9</td>
+<td align="center">65.2</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">6.0</td>
+<td align="center">32.5</td>
+<td align="center">36.1</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">92.5</td>
+<td align="center">83.8</td>
+<td align="center">85.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">7.5</td>
+<td align="center">45.0</td>
+<td align="center">52.5</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">85.0</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">97.5</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Kruskal-Wallis rank sum test</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistic</td>
+<td align="center">2.894</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td>P statistic</td>
+<td align="center">0.24</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/Grade.pos-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/Grade.pos-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="who-histologic-grade-1" class="section level3">
+<h3>WHO histologic grade</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Low Grade</th>
+<th align="center">High Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">53.1</td>
+<td align="center">70.9</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">39.4</td>
+<td align="center">32.3</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">60.0</td>
+<td align="center">90.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">75.0</td>
+<td align="center">40.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">332</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">1.8e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/WHO.grade.pos-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/WHO.grade.pos-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="lymphovascular-invasion-1" class="section level3">
+<h3>Lymphovascular invasion</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Lymphovascular invasion</th>
+<th align="center">No lymphovascular invasion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">66.1</td>
+<td align="center">69.3</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">36.8</td>
+<td align="center">32.2</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">87.5</td>
+<td align="center">86.2</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">57.5</td>
+<td align="center">30.6</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">834</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">5.2e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/LVI.pos-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/LVI.pos-2.png" width="672" /></p>
+<hr />
+</div>
+<div id="lymph-node-metastasis-1" class="section level3">
+<h3>Lymph node metastasis</h3>
+<table>
+<caption>Summary table</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Lymph node metastasis</th>
+<th align="center">No lymph node metastasis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="center">74.1</td>
+<td align="center">66.3</td>
+</tr>
+<tr class="even">
+<td>Standard deviation</td>
+<td align="center">37.2</td>
+<td align="center">33.8</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="center">92.5</td>
+<td align="center">80.0</td>
+</tr>
+<tr class="even">
+<td>Interquartile range</td>
+<td align="center">36.2</td>
+<td align="center">45.0</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td align="center">100.0</td>
+<td align="center">100.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Mann-Whitney U test for the sum of ranks</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U-statistic</td>
+<td align="center">458</td>
+</tr>
+<tr class="even">
+<td>P statistic</td>
+<td align="center">2e-01</td>
+</tr>
+</tbody>
+</table>
+<p><img src="association-clinicopathologic_files/figure-html/LN.Metastasis.pos-1.png" width="672" /><img src="association-clinicopathologic_files/figure-html/LN.Metastasis.pos-2.png" width="672" /></p>
+<hr />
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

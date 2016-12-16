@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>ARID1a by regression models</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">ARID in UTUC</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Descriptive analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="cohort.html">Cohort features</a>
+    </li>
+    <li>
+      <a href="arid1a-expression.html">ARID1a expression</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Association analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="association-tissue.html">ARID1a by tissue type</a>
+    </li>
+    <li>
+      <a href="association-clinicopathologic.html">ARID1a by clinicopathologic features</a>
+    </li>
+    <li>
+      <a href="association-outcome.html">ARID1a by outcome features</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Outcome analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="outcome-regression.html">Regression models</a>
+    </li>
+    <li>
+      <a href="outcome-survival.html">Survival curves</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/alcideschaux/ARID1a-UTUC">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">ARID1a by regression models</h1>
+
+</div>
+
+
+<p>Odds ratios were estimated using unconditional binary <a href="https://en.wikipedia.org/wiki/Logistic_regression">logistic regression</a>. Hazard ratios were estimated using <a href="https://en.wikipedia.org/wiki/Proportional_hazards_model">Cox’s proportional hazards regression</a>. Survival curves were built using the <a href="https://en.wikipedia.org/wiki/Kaplan-Meier_estimator">Kapplan-Meier estimator</a> and compared using the <a href="https://en.wikipedia.org/wiki/Log-rank_test">log-rank test</a>.</p>
+<hr />
+<div id="regression-models" class="section level2">
+<h2><strong>Regression models</strong></h2>
+<div id="bladder-recurrence" class="section level3">
+<h3>Bladder recurrence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">H-scores = 0 vs. H-score &gt; 0</td>
+<td align="center">0.81 (0.18, 4.14)</td>
+<td align="center">0.78</td>
+<td align="center">0.46 (0.18, 1.19)</td>
+<td align="center">0.07804</td>
+</tr>
+<tr class="even">
+<td align="left">H-scores &lt; median vs. H-score &gt; median</td>
+<td align="center">0.91 (0.39, 2.20)</td>
+<td align="center">0.84</td>
+<td align="center">0.29 (0.16, 0.52)</td>
+<td align="center">0.00001</td>
+</tr>
+<tr class="odd">
+<td align="left">H-score &lt; Q3 vs. H-score &gt; Q3</td>
+<td align="center">0.74 (0.30, 1.76)</td>
+<td align="center">0.50</td>
+<td align="center">0.48 (0.28, 0.81)</td>
+<td align="center">0.00661</td>
+</tr>
+<tr class="even">
+<td align="left">% cells(+) = 0 vs. % cells(+) &gt; 0</td>
+<td align="center">0.81 (0.18, 4.14)</td>
+<td align="center">0.78</td>
+<td align="center">0.46 (0.18, 1.19)</td>
+<td align="center">0.07804</td>
+</tr>
+<tr class="odd">
+<td align="left">% cells(+) &lt; median vs. % cells(+) &gt; median</td>
+<td align="center">1.11 (0.47, 2.70)</td>
+<td align="center">0.81</td>
+<td align="center">0.37 (0.21, 0.65)</td>
+<td align="center">0.00033</td>
+</tr>
+<tr class="even">
+<td align="left">% cells(+) &lt; Q3 vs. cells(+) &gt; Q3</td>
+<td align="center">0.61 (0.23, 1.53)</td>
+<td align="center">0.30</td>
+<td align="center">0.43 (0.25, 0.74)</td>
+<td align="center">0.00304</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="tumor-progression" class="section level3">
+<h3>Tumor progression</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">H-scores = 0 vs. H-score &gt; 0</td>
+<td align="center">1.04 (0.24, 5.33)</td>
+<td align="center">0.96</td>
+<td align="center">0.57 (0.22, 1.46)</td>
+<td align="center">0.2065</td>
+</tr>
+<tr class="even">
+<td align="left">H-scores &lt; median vs. H-score &gt; median</td>
+<td align="center">1.27 (0.56, 2.97)</td>
+<td align="center">0.57</td>
+<td align="center">0.40 (0.23, 0.70)</td>
+<td align="center">0.0011</td>
+</tr>
+<tr class="odd">
+<td align="left">H-score &lt; Q3 vs. H-score &gt; Q3</td>
+<td align="center">1.54 (0.67, 3.55)</td>
+<td align="center">0.31</td>
+<td align="center">0.75 (0.43, 1.29)</td>
+<td align="center">0.3015</td>
+</tr>
+<tr class="even">
+<td align="left">% cells(+) = 0 vs. % cells(+) &gt; 0</td>
+<td align="center">1.04 (0.24, 5.33)</td>
+<td align="center">0.96</td>
+<td align="center">0.57 (0.22, 1.46)</td>
+<td align="center">0.2065</td>
+</tr>
+<tr class="odd">
+<td align="left">% cells(+) &lt; median vs. % cells(+) &gt; median</td>
+<td align="center">0.63 (0.27, 1.43)</td>
+<td align="center">0.27</td>
+<td align="center">0.42 (0.24, 0.74)</td>
+<td align="center">0.0020</td>
+</tr>
+<tr class="even">
+<td align="left">% cells(+) &lt; Q3 vs. cells(+) &gt; Q3</td>
+<td align="center">1.83 (0.77, 4.39)</td>
+<td align="center">0.17</td>
+<td align="center">0.73 (0.41, 1.31)</td>
+<td align="center">0.2975</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="overall-mortality" class="section level3">
+<h3>Overall mortality</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">H-scores = 0 vs. H-score &gt; 0</td>
+<td align="center">0.82 (0.19, 4.21)</td>
+<td align="center">0.79</td>
+<td align="center">0.54 (0.21, 1.38)</td>
+<td align="center">0.16182</td>
+</tr>
+<tr class="even">
+<td align="left">H-scores &lt; median vs. H-score &gt; median</td>
+<td align="center">0.88 (0.38, 2.08)</td>
+<td align="center">0.77</td>
+<td align="center">0.39 (0.22, 0.68)</td>
+<td align="center">0.00056</td>
+</tr>
+<tr class="odd">
+<td align="left">H-score &lt; Q3 vs. H-score &gt; Q3</td>
+<td align="center">1.07 (0.45, 2.50)</td>
+<td align="center">0.88</td>
+<td align="center">0.64 (0.38, 1.08)</td>
+<td align="center">0.09892</td>
+</tr>
+<tr class="even">
+<td align="left">% cells(+) = 0 vs. % cells(+) &gt; 0</td>
+<td align="center">0.82 (0.19, 4.21)</td>
+<td align="center">0.79</td>
+<td align="center">0.54 (0.21, 1.38)</td>
+<td align="center">0.16182</td>
+</tr>
+<tr class="odd">
+<td align="left">% cells(+) &lt; median vs. % cells(+) &gt; median</td>
+<td align="center">0.61 (0.26, 1.42)</td>
+<td align="center">0.25</td>
+<td align="center">0.45 (0.26, 0.78)</td>
+<td align="center">0.00303</td>
+</tr>
+<tr class="even">
+<td align="left">% cells(+) &lt; Q3 vs. cells(+) &gt; Q3</td>
+<td align="center">0.93 (0.37, 2.27)</td>
+<td align="center">0.88</td>
+<td align="center">0.59 (0.35, 1.01)</td>
+<td align="center">0.06265</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="cancer-related-mortality" class="section level3">
+<h3>Cancer-related mortality</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Predictors</th>
+<th align="center">Odds Ratio (95% CI)</th>
+<th align="center">P value</th>
+<th align="center">Hazard Ratio (95% CI)</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">H-scores = 0 vs. H-score &gt; 0</td>
+<td align="center">0.70 (0.16, 3.62)</td>
+<td align="center">0.645</td>
+<td align="center">0.52 (0.20, 1.33)</td>
+<td align="center">0.13548</td>
+</tr>
+<tr class="even">
+<td align="left">H-scores &lt; median vs. H-score &gt; median</td>
+<td align="center">0.84 (0.35, 2.03)</td>
+<td align="center">0.695</td>
+<td align="center">0.39 (0.23, 0.67)</td>
+<td align="center">0.00045</td>
+</tr>
+<tr class="odd">
+<td align="left">H-score &lt; Q3 vs. H-score &gt; Q3</td>
+<td align="center">1.10 (0.45, 2.64)</td>
+<td align="center">0.827</td>
+<td align="center">0.65 (0.39, 1.08)</td>
+<td align="center">0.10431</td>
+</tr>
+<tr class="even">
+<td align="left">% cells(+) = 0 vs. % cells(+) &gt; 0</td>
+<td align="center">0.70 (0.16, 3.62)</td>
+<td align="center">0.645</td>
+<td align="center">0.52 (0.20, 1.33)</td>
+<td align="center">0.13548</td>
+</tr>
+<tr class="odd">
+<td align="left">% cells(+) &lt; median vs. % cells(+) &gt; median</td>
+<td align="center">0.47 (0.19, 1.11)</td>
+<td align="center">0.087</td>
+<td align="center">0.42 (0.25, 0.73)</td>
+<td align="center">0.00113</td>
+</tr>
+<tr class="even">
+<td align="left">% cells(+) &lt; Q3 vs. cells(+) &gt; Q3</td>
+<td align="center">0.92 (0.35, 2.28)</td>
+<td align="center">0.853</td>
+<td align="center">0.60 (0.36, 1.01)</td>
+<td align="center">0.05992</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
